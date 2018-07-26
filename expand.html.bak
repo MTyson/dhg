@@ -1,0 +1,38 @@
+ "expand": new Page({
+		id: 5,
+		bg: "images/snowmoonsandiego2017.jpg",
+        wrapClass: 'expand',
+        wrapHeight: '100%',
+        wrapWidth: '80vw',
+		html: 
+                  "<div class='content-box text' style='text-align: center; font-size: 2em;width:100%;height:40px;align-self:flex-start;margin-top:2em;'>EXPAND</div>"+
+                  "<div class='video-holder' style='display: flex; flex-direction: row;width:100%;'>"+
+                  "<div class='content-box video'>"+
+                    "<video id='' class='afterglow' controls preload='auto' poster='media_gallery/video/thumb1.jpg'>"+
+                      "<source src='media_gallery/video/Leo1.webm' type='video/webm'/>" +
+                    "</video>"+
+                  "</div>"+
+                  "<div class='content-box video'>"+
+                    "<video id='' class='afterglow' controls preload='auto' poster='media_gallery/video/thumb2.jpg'>"+
+                      "<source src='media_gallery/video/David R Hawkins On Infinite Potentiality.webm' type='video/webm'/>" +
+                    "</video>"+
+                  "</div>"+
+                  "<div class='content-box video'>"+
+                    "<video id='' class='afterglow' controls preload='auto' width='' height='100%' poster='media_gallery/video/thumb3.jpg'>"+
+                      "<source src='media_gallery/video/Ramtha_Be_Your_Own_Savior.webm' type='video/webm'/>" +
+                    "</video>"+
+                  "</div>"+
+                  "<div class='content-box video'>"+
+                    "<video id='' class='afterglow' controls preload='auto' poster='media_gallery/video/11th_hour_thumb.jpg'>"+
+                      "<source src='media_gallery/video/11th_Hour_Trailer.webm' type='video/webm'/>" +
+                    "</video>"+
+                  "</div>"+
+                   "<div class='content-box video'>"+
+                    "<video id='' class='afterglow' controls preload='auto' poster='media_gallery/video/Sweet_Lord_thumb.jpg'>"+
+                      "<source src='media_gallery/video/George_Harrison_My_Sweet_Lord.webm' type='video/webm'/>" +
+                    "</video>"+
+                  "</div>"+
+                  "</div>"+
+                "</div>"
+             
+	}),
