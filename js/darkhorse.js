@@ -219,8 +219,8 @@ var App = {
 		// check for intro, close if present
 		
 		if ($('.intro').length > 0){
-			$('.intro').css("clip", "rect(0px 705px 310px 0px)"); // TODO: Calculate the sizes from actual object
-			$('.intro').animate({'clip':'rect(100px 705px 100px 0px)'}, 1000, "easeOutQuart").promise().then(function(){
+			//$('.intro').css("clip", "rect(0px 705px 310px 0px)"); // TODO: Calculate the sizes from actual object
+			$('.intro').hide("clip", 1000, "easeOutQuart").promise().then(function(){
 				App.showProgress();
 				$('.intro').remove();
 				App.openPage(target);
@@ -243,44 +243,44 @@ var App = {
 		
 		//$('#bg-div').remove();
 
-        if (!target){
-            var nextIsActive = false;
-            for (var p in Pages){
-                if (nextIsActive){
-                    target = p;
-                    break;
-                } else if (Pages[p].active){
-                    nextIsActive = true;
-                } 
-            }
-            if (!nextIsActive){
-                for (var p in Pages){
-                    target = p;
-                    break;
-                }
-            }
-        }
-        console.info("calculated target: " + target);
-        
-        var targetParts = target.split(":");
-        target = targetParts[0];
-        
-        page = Pages[target.toLowerCase()];
-        page.setPath(targetParts);
-        console.info("page: " + page);
-        //activatePage() - move to OO class
+    if (!target){
+        var nextIsActive = false;
         for (var p in Pages){
-            Pages[p].active = false;
+            if (nextIsActive){
+                target = p;
+                break;
+            } else if (Pages[p].active){
+                nextIsActive = true;
+            } 
         }
-        page.active = true;
-        
-        $('.bottom-item').each(function(x, item){ // Make menu item a member of Page
-			$(item).removeClass('selected');
-            if ($(item).html() == target.toUpperCase()) {
-                $(item).addClass('selected');
+        if (!nextIsActive){
+            for (var p in Pages){
+                target = p;
+                break;
             }
-		});
-        page.open();
+        }
+    }
+    console.info("calculated target: " + target);
+    
+    var targetParts = target.split(":");
+    target = targetParts[0];
+    
+    page = Pages[target.toLowerCase()];
+    page.setPath(targetParts);
+    console.info("page: " + page);
+    //activatePage() - move to OO class
+    for (var p in Pages){
+        Pages[p].active = false;
+    }
+    page.active = true;
+    
+    $('.bottom-item').each(function(x, item){ // Make menu item a member of Page
+      $(item).removeClass('selected');
+      if ($(item).html() == target.toUpperCase()) {
+        $(item).addClass('selected');
+      }
+    });
+    page.open();
 	},
 	openContent: function(contentId){
 		$(".content-arrow").hide(800);
@@ -365,7 +365,7 @@ var App = {
         setTimeout(function(){
             $("#darkhorse-logo").fadeIn(4000, "easeInSine");
             setTimeout(function(){
-                
+
                 $("#darkhorse-logo").fadeOut(500, "easeOutSine", function(){
                     App.navigate();
                 });
@@ -490,7 +490,7 @@ Page.prototype.doPath = function(){
     // no op default
 }
 Page.prototype.open = function(){
-    console.info("BEGIN Page.open");
+  console.info("BEGIN Page.open");
 	var page = this; // TODO: Switch to using this keyword properly (refactor)
 	
 	var viewW = $("body").width(),
@@ -505,192 +505,191 @@ Page.prototype.open = function(){
 		//backgroundImage: "url('"+page.bg+"')",
 		//backgroundSize:"cover"
 	}).attr('id', 'bg-div').addClass('bg-div').addClass(page.wrapClass);
-    $('body').prepend(bgDiv);
-    // ensure image is loaded before display 
-		var bgPreLoader = $('#bg-img-'+page.id);
-		console.info('#bg-img-'+page.id);
-		if (bgPreLoader.length > 0){
-			page._openAfterBgLoad.bind(page)();
-		} else {
-            var bgUrl = bgDiv.css('background-image');
-            bgUrl = bgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
-            console.info("bgUrl: "+bgUrl);
-			$('body').append("<img src='"+bgUrl+"' id='bg-img-"+page.id+"' style='opacity: 0; display: none;'/> ");
-			$("#bg-img-"+page.id).load(function() {
-				page._openAfterBgLoad.bind(page)();
-			});
-		}
+  $('body').prepend(bgDiv);
+  // ensure image is loaded before display 
+  var bgPreLoader = $('#bg-img-'+page.id);
+  console.info('#bg-img-'+page.id);
+  if (bgPreLoader.length > 0){
+    page._openAfterBgLoad.bind(page)();
+  } else {
+    var bgUrl = bgDiv.css('background-image');
+    bgUrl = bgUrl.replace('url(','').replace(')','').replace(/\"/gi, "");
+    console.info("bgUrl: "+bgUrl);
+    $('body').append("<img src='"+bgUrl+"' id='bg-img-"+page.id+"' style='opacity: 0; display: none;'/> ");
+    $("#bg-img-"+page.id).load(function() {
+      page._openAfterBgLoad.bind(page)();
+    });
+  }
 }
 Page.prototype._openAfterBgLoad = function(){
-    console.info("BEGIN Page._openAfterBgLoad");
+  console.info("BEGIN Page._openAfterBgLoad");
 	var viewW = $("body").width(),
-		viewH = $("body").height();
+  viewH = $("body").height();
 	App.hideProgress();
     
-    $('#bg-div').animate({
-		"height": viewH,
-		"top": "0px"
+  $('#bg-div').animate({
+    "height": viewH,
+    "top": "0px"
 	}, 700, "easeOutQuart").promise().then( function(){
-        this.css({"min-height:":"100%","min-width":"100%"}).css({"height":"","width":""}); // ensures bg resizes with page
+    this.css({"min-height:":"100%","min-width":"100%"}).css({"height":"","width":""}); // ensures bg resizes with page
 		if (page.intro){
-            page.intro(this);
-        } else {
-            page._openAfterBlind();
-        }
+      page.intro(this);
+    } else {
+       page._openAfterBlind();
+    }
 	});
     
-    App.attachNavigation(); // make OO
+  App.attachNavigation(); // make OO
 }
 Page.prototype._openAfterBlind = function(){
     console.info("BEGIN _openAfterBlind");
     var page = this;
     // make actual background the bg-div, so when we animate the new bg-div, it will be there
     $('html').css({
-        background: "url('"+page.bg+"') no-repeat center center",  // url('backgrounds/image1.jpg')
-        backgroundSize: "cover"
+      background: "url('"+page.bg+"') no-repeat center center",  // url('backgrounds/image1.jpg')
+      backgroundSize: "cover"
     })
     
     var contentWrap = $('<div class="content-wrap" />');
     if (page.wrapClass){
-        contentWrap.addClass(page.wrapClass);
+      contentWrap.addClass(page.wrapClass);
     }
     contentWrap.attr("page-id", page.id);
     contentWrap.css({
-        'width': page.wrapWidth,
-        'height': page.wrapHeight,
-        'justify-content': page.wrapJustify
+      'width': page.wrapWidth,
+      'height': page.wrapHeight,
+      'justify-content': page.wrapJustify
     })
     $('.bg-div').append(contentWrap);
     
     if (page.maxBoxes){
-        /*
-        var arrow = $("<div class='content-arrow'>&lt;</div>");
-        arrow.on('click', function(e){
-            var edgeVisible = $('.content-box.visible').first(),
-                toShow = $('.content-box').eq(Number(edgeVisible.attr('box-count')) - 1);
-            if (Number(edgeVisible.attr('box-count')) - 1 >= 0){					
-                $('.content-box.visible').last().hide("blind", {direction:"left"}, 600, 'easeOutQuart').removeClass('visible');
-                toShow.show("blind", {direction:"left"}, 600, 'easeOutQuart').addClass('visible');
-            }
-        })
-        contentWrap.append(arrow);
-        */
+      /*
+      var arrow = $("<div class='content-arrow'>&lt;</div>");
+      arrow.on('click', function(e){
+          var edgeVisible = $('.content-box.visible').first(),
+              toShow = $('.content-box').eq(Number(edgeVisible.attr('box-count')) - 1);
+          if (Number(edgeVisible.attr('box-count')) - 1 >= 0){					
+              $('.content-box.visible').last().hide("blind", {direction:"left"}, 600, 'easeOutQuart').removeClass('visible');
+              toShow.show("blind", {direction:"left"}, 600, 'easeOutQuart').addClass('visible');
+          }
+      })
+      contentWrap.append(arrow);
+      */
     }
     
     if (page.init){
-        page.init();
+      page.init();
     }
 
     // set content
     if (page.html){
-        contentWrap.html(page.html);
+      contentWrap.html(page.html);
     } else {
-        for (x in page.content){
-            var box = $("<div />").addClass('content-box').addClass(page.contentClass).prop("id", page.content[x].id).css({
-                //width: page.smallBoxWidth, height: page.smallBoxHeight
-            });
+      for (x in page.content){
+        var box = $("<div />").addClass('content-box').addClass(page.contentClass).prop("id", page.content[x].id).css({
+          //width: page.smallBoxWidth, height: page.smallBoxHeight
+        });
             
-            box.attr('box-count', x);
-            if (Number(x) === (page.content.length-1)){
-                box.attr('box-last', "true");
-            }
-            
-            if (page.content[x].image){
-                var img = $("<img />");
-                var src = typeof page.content[x].image === 'string' ? page.content[x].image : page.content[x].image.src;
-                img.attr("src", src);
-                
-                var imgPad = 20;
-                
-                
-                var imgWrap = $("<div />").addClass('img-wrap').css({
-                   // width: (page.smallBoxWidth - imgPad), //page.thumbWidth,
-                    //height: (page.smallBoxHeight / 2),
-                    //margin: (imgPad / 2)
-					//width: box.hasClass('small') ? 210 : 270, //width: 210px; height: 190px;
-					//height: box.hasClass('small') ? 190 : 340
-                });
-                
-                /*
-                if (typeof page.content[x].image === "object"){
-                    img.css({
-                        //width: page.content[x].image.width,
-                        //height: page.content[x].image.height
-                        height: "100%"
-                    })
-                    imgWrap.css({
-                        width: page.content[x].image.width,
-                        height: page.content[x].image.height
-                    })
-                    /*img.on('click', function(){
-                        page.content[x].image.onClick($(this).parent().prop('id'));
-                    });
-                    
-                }
-                imgWrap.on('click', function(){
-                    App.openContent($(this).parent().attr('id'));
-                });
-                */
-                imgWrap.append(img);
-                box.append(imgWrap);
-            }
-            if (page.content[x].video){
-                var imgWrap = $("<div />").addClass('img-wrap');
-                imgWrap.css({
-                    width: page.content[x].video.width,
-                    height: page.content[x].video.height
-                })
-                box.append(imgWrap);
-                
-                var video = $('<video id="example_video_1" class="video-js vjs-default-skin" ' +
-                  'controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'" ' +
-                  'poster="'+page.content[x].video.thumb+'"> ' +
-                  '<source src="'+page.content[x].video.src+'" type="video/webm"/> ' +
-                  '<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" /> ' +
-                  '<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" /> ' +
-                  '</video>');
-                  /*
-                var video = $('<video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'"></video>');
-                player = videojs('my_video_1', {
-                    techOrder: ['flash', 'html5'],
-                    autoplay: false,
-                    sources: [{ 
-                        type: "video/flv",
-                        src: "http://www.longtailvideo.com/jw/upload/bunny.flv"
-                    }]
-                });
-                */
-                
-                imgWrap.append(video);
-                
-                imgWrap.on('click', function(){
-                    App.openContent($(this).parent().attr('id'));
-                });
-            }
-            
-            if (page.content[x].title)
-                box.append("<p class='title'>"+page.content[x].title+"</p>");
-            if (page.content[x].subtitle)
-                box.append("<p class='subtitle'>"+page.content[x].subtitle+"</p>");
-            if (page.content[x].summary)
-                box.append("<p class='summary'>"+page.content[x].summary+"</p>");
-            if (page.content[x].content)
-                box.append("<div class='content'>"+page.content[x].content+"</div>");
-            if (page.button){
-                var btn = $("<div class='button'>READ MORE</div>");
-                if (page.button === "hidden"){
-                    btn.addClass('hidden');
-                }
-                btn.on('click', function(e){
-                    $(this).off('click');
-                    App.openContent($(e.target).parent().prop("id"));
-                });
-                box.append(btn);
-            }
-            
-            contentWrap.append(box);
-            //$('#bg-div').append(box);					
+        box.attr('box-count', x);
+        if (Number(x) === (page.content.length-1)){
+            box.attr('box-last', "true");
         }
+        
+        if (page.content[x].image){
+          var img = $("<img />");
+          var src = typeof page.content[x].image === 'string' ? page.content[x].image : page.content[x].image.src;
+          img.attr("src", src);
+          
+          var imgPad = 20;
+          
+          var imgWrap = $("<div />").addClass('img-wrap').css({
+            // width: (page.smallBoxWidth - imgPad), //page.thumbWidth,
+            //height: (page.smallBoxHeight / 2),
+            //margin: (imgPad / 2)
+            //width: box.hasClass('small') ? 210 : 270, //width: 210px; height: 190px;
+            //height: box.hasClass('small') ? 190 : 340
+          });
+            
+            /*
+            if (typeof page.content[x].image === "object"){
+                img.css({
+                    //width: page.content[x].image.width,
+                    //height: page.content[x].image.height
+                    height: "100%"
+                })
+                imgWrap.css({
+                    width: page.content[x].image.width,
+                    height: page.content[x].image.height
+                })
+                /*img.on('click', function(){
+                    page.content[x].image.onClick($(this).parent().prop('id'));
+                });
+                
+            }
+            imgWrap.on('click', function(){
+                App.openContent($(this).parent().attr('id'));
+            });
+            */
+            imgWrap.append(img);
+            box.append(imgWrap);
+        }
+        if (page.content[x].video){
+            var imgWrap = $("<div />").addClass('img-wrap');
+            imgWrap.css({
+                width: page.content[x].video.width,
+                height: page.content[x].video.height
+            })
+            box.append(imgWrap);
+            
+            var video = $('<video id="example_video_1" class="video-js vjs-default-skin" ' +
+              'controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'" ' +
+              'poster="'+page.content[x].video.thumb+'"> ' +
+              '<source src="'+page.content[x].video.src+'" type="video/webm"/> ' +
+              '<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" /> ' +
+              '<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" /> ' +
+              '</video>');
+              /*
+            var video = $('<video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'"></video>');
+            player = videojs('my_video_1', {
+                techOrder: ['flash', 'html5'],
+                autoplay: false,
+                sources: [{ 
+                    type: "video/flv",
+                    src: "http://www.longtailvideo.com/jw/upload/bunny.flv"
+                }]
+            });
+            */
+            
+            imgWrap.append(video);
+            
+            imgWrap.on('click', function(){
+                App.openContent($(this).parent().attr('id'));
+            });
+        }
+        
+        if (page.content[x].title)
+            box.append("<p class='title'>"+page.content[x].title+"</p>");
+        if (page.content[x].subtitle)
+            box.append("<p class='subtitle'>"+page.content[x].subtitle+"</p>");
+        if (page.content[x].summary)
+            box.append("<p class='summary'>"+page.content[x].summary+"</p>");
+        if (page.content[x].content)
+            box.append("<div class='content'>"+page.content[x].content+"</div>");
+        if (page.button){
+            var btn = $("<div class='button'>READ MORE</div>");
+            if (page.button === "hidden"){
+                btn.addClass('hidden');
+            }
+            btn.on('click', function(e){
+                $(this).off('click');
+                App.openContent($(e.target).parent().prop("id"));
+            });
+            box.append(btn);
+        }
+        
+        contentWrap.append(box);
+        //$('#bg-div').append(box);					
+      }
     }
     
     if (page.maxBoxes){
@@ -772,24 +771,24 @@ var Pages = {
 		functions: [
 			App.intro.bind(App)
 		],
-        active: true
+    active: true
 	}),
     "overview": new Page({
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
         wrapClass: "overview",
 		html: //"<div id='overview'>"+
-			"<div class='content-box text'><h2 style='margin-top: .6em;'>dark horse tek &ensp;<br> /ˈdärk ˈˌhôrs tek/</h2><h3>Definition: <span style='margin-bottom: 0px;font-style:italic;'> noun</span></h3>" +
-            "<p style='margin-top: .9em; margin-bottom: .6em'>A dark horse is a little-known person or thing that emerges to prominence, especially in a competition of some sort, or a contestant that seems unlikely to succeed.</p><p>Unlike traditional unicorns, darkhorse.tech consistently embodies and delivers on the promise of excellence and success, creating platinum level, dynamic technologies that empower its users, its investors and the world.</p>"+
-			"</div>"+
-            "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
-              "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
-              "<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>" + 
-			  "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
-		   // "</div>",
-        functions: [
-           App.afterOverview
-        ]
+    "<div class='content-box text'><h2 style='margin-top: .6em;'>dark horse tek &ensp;<br> /ˈdärk ˈˌhôrs tek/</h2><h3>Definition: <span style='margin-bottom: 0px;font-style:italic;'> noun</span></h3>" +
+          "<p style='margin-top: .9em; margin-bottom: .6em'>A dark horse is a little-known person or thing that emerges to prominence, especially in a competition of some sort, or a contestant that seems unlikely to succeed.</p><p>Unlike traditional unicorns, darkhorse.tech consistently embodies and delivers on the promise of excellence and success, creating platinum level, dynamic technologies that empower its users, its investors and the world.</p>"+
+    "</div>"+
+          "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
+            "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
+            "<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>" + 
+      "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
+     // "</div>",
+      functions: [
+         App.afterOverview
+      ]
 	}),
 
     /*
@@ -805,40 +804,40 @@ var Pages = {
 		bg: "images/dh-logo-no-text.jpg",
 		button: true,
 		wrapJustify: "center",
-        wrapClass: "home",
+    wrapClass: "home",
 		boxCount: 3,
 		maxBoxes: 3,
-        doPath: function(){
-            //alert('ok');
-            if (this.path != null && this.path.length > 1){
-                var contentTarget = this.path[1];
-                setTimeout(function(){
-                    App.openContent(contentTarget);
-                }, 250);
-            }
-        },//+ "<a href='#' onclick='App.openContent(\"development\");return false;'>MORE</a>"
+    doPath: function(){
+      //alert('ok');
+      if (this.path != null && this.path.length > 1){
+        var contentTarget = this.path[1];
+        setTimeout(function(){
+            App.openContent(contentTarget);
+        }, 250);
+      }
+    },//+ "<a href='#' onclick='App.openContent(\"development\");return false;'>MORE</a>"
 		content: [
 			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Helping you decipher and discover, deeper drives and desires, helping you express yourself in the world and on the web.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." },
 			{ id: "articles", image: "images/darkhorsearticles-500.jpg", title: "ARTICLES", subtitle: "IN DEPTH", summary: "Read some of our articles that have been featured on the cover of JavaWorld and IBM's developerWorks, and other articles of interest.", content: "<div style='text-align:left;'><h3>IBM's developerWorks</h3>"+            
-            "<p><a href='http://www.ibm.com/developerworks/opensource/library/j-use-elasticsearch-java-apps/index.html'>Elastic Search, Java and the Cloud</a></p>"+
-            "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue1-bluemix/index.html'>Vue.js in the Cloud</a></p>"+
-            "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue2-bluemix/index.html'>Vue.js on BlueMix</a></p>"+
-            "<p><a href='http://www.ibm.com/developerworks/library/wa-use-jspm-javascript-modules/index.html'>Modern JavaScript Modules</a></p>"+
-            "<h3>JavaWorld</h3>"+
-            "<p><a href='http://www.javaworld.com/article/2995526/development-tools/jump-into-java-micro-frameworks-part-1.html'>Java Micro-Service Frameworks</a></p>"+
-            "<p><a href='http://www.javaworld.com/article/3008117/development-tools/jump-into-java-microframeworks-part-2-ninja.html'>Java Ninja Framework</a></p>"+
-            "<p><a href='http://www.javaworld.com/article/3019792/development-tools/jump-into-java-microframeworks-part-3-spark.html'>Java Spark</a></p>"+
-            "<p><a href='http://www.javaworld.com/article/3045300/application-development/jump-into-java-microframeworks-part-4-play.html'>Java Play Framework</a></p>"+
-            "<p><a href='http://www.javaworld.com/article/2077874/open-source-tools/the-pathproxy-pattern--persisting-complex-associations.html'>The Path Proxy Pattern</a></p>"+
-            "<p><a href='http://www.javaworld.com/article/2077808/design-patterns/the-ajaxcomponent-strategy-for-jsf--the-best-of-both-worlds.html?page=7'>Ajax Component Strategy</a></p>"+
-            "</div>"},
-            { id: "expansion", image: "images/darkhorse-imagine.jpg", title: "EXPANSION", subtitle: "GREATER CLARITY", summary: "Our coaching and consultation services help bring new aspects of yourself and your image into sharper focus.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." }
+        "<p><a href='http://www.ibm.com/developerworks/opensource/library/j-use-elasticsearch-java-apps/index.html'>Elastic Search, Java and the Cloud</a></p>"+
+        "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue1-bluemix/index.html'>Vue.js in the Cloud</a></p>"+
+        "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue2-bluemix/index.html'>Vue.js on BlueMix</a></p>"+
+        "<p><a href='http://www.ibm.com/developerworks/library/wa-use-jspm-javascript-modules/index.html'>Modern JavaScript Modules</a></p>"+
+        "<h3>JavaWorld</h3>"+
+        "<p><a href='http://www.javaworld.com/article/2995526/development-tools/jump-into-java-micro-frameworks-part-1.html'>Java Micro-Service Frameworks</a></p>"+
+        "<p><a href='http://www.javaworld.com/article/3008117/development-tools/jump-into-java-microframeworks-part-2-ninja.html'>Java Ninja Framework</a></p>"+
+        "<p><a href='http://www.javaworld.com/article/3019792/development-tools/jump-into-java-microframeworks-part-3-spark.html'>Java Spark</a></p>"+
+        "<p><a href='http://www.javaworld.com/article/3045300/application-development/jump-into-java-microframeworks-part-4-play.html'>Java Play Framework</a></p>"+
+        "<p><a href='http://www.javaworld.com/article/2077874/open-source-tools/the-pathproxy-pattern--persisting-complex-associations.html'>The Path Proxy Pattern</a></p>"+
+        "<p><a href='http://www.javaworld.com/article/2077808/design-patterns/the-ajaxcomponent-strategy-for-jsf--the-best-of-both-worlds.html?page=7'>Ajax Component Strategy</a></p>"+
+        "</div>"},
+      { id: "expansion", image: "images/darkhorse-imagine.jpg", title: "EXPANSION", subtitle: "GREATER CLARITY", summary: "Our coaching and consultation services help bring new aspects of yourself and your image into sharper focus.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." }
 		]
 	}),
     "world": new Page({
 		id: 4,
 		bg: "images/earth-1900x1280.jpg",
-        wrapClass: "world",
+    wrapClass: "world",
 		html: //"<div id='world'>"+
                 ""+
                   "<div class='content-box text'><div style='text-align: center; font-size: 1.4em;'>Change the World</div>"+
