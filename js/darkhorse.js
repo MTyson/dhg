@@ -277,7 +277,7 @@ var App = {
       var pageId = box.parent().attr("page-id");
       var page = PageManager.getPageById(pageId);
       var imgPad = 20;
-      $(".content-arrow").show(800);
+      //$(".content-arrow").show(800);
       $(this).off('click').on('click', function(e){
           $(this).off('click');
           App.openContent($(e.target).parent().prop("id"));
