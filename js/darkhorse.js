@@ -214,51 +214,34 @@ var App = {
 		}).promise();
 	},
 	navigate: function(target){	
-        console.info("target: "+ target);
-		// close existing content
-		// check for intro, close if present
+    console.info("target: "+ target);
 		
-		if ($('.intro').length > 0){
-			//$('.intro').css("clip", "rect(0px 705px 310px 0px)"); // TODO: Calculate the sizes from actual object
-			$('.intro').hide("clip", 1000, "easeOutQuart").promise().then(function(){
-				App.showProgress();
-				$('.intro').remove();
-				App.openPage(target);
-			});
-		} else {
-			//$('.bg-div').hide("clip", {direction: "vertical"}, 1700, "easeOutQuart").promise().then(function(){
-			var viewH = $(window).height();
-			$('.bg-div').animate({
-				top: (viewH / 2),
-				height: 0
-			}, 500, "easeOutQuart").promise().then(function(){
-				App.showProgress();
-				App.openPage(target);
-			});
-		}
+    $('.bg-div').hide("clip", {direction: "vertical"}, 1000, "easeOutQuart").promise().then(function(){
+      $(".intro").remove();
+      $(".bg-div").remove();
+      App.showProgress();
+      App.openPage(target);
+    });
 	},
 	openPage: function(target){
-		var viewW = $(window).width(),
-			viewH = $(window).height();
+		var viewW = $(window).width(), viewH = $(window).height();
 		
-		//$('#bg-div').remove();
-
     if (!target){
-        var nextIsActive = false;
-        for (var p in Pages){
-            if (nextIsActive){
-                target = p;
-                break;
-            } else if (Pages[p].active){
-                nextIsActive = true;
-            } 
-        }
-        if (!nextIsActive){
-            for (var p in Pages){
-                target = p;
-                break;
-            }
-        }
+      var nextIsActive = false;
+      for (var p in Pages){
+          if (nextIsActive){
+              target = p;
+              break;
+          } else if (Pages[p].active){
+              nextIsActive = true;
+          } 
+      }
+      if (!nextIsActive){
+          for (var p in Pages){
+              target = p;
+              break;
+          }
+      }
     }
     console.info("calculated target: " + target);
     
@@ -270,7 +253,7 @@ var App = {
     console.info("page: " + page);
     //activatePage() - move to OO class
     for (var p in Pages){
-        Pages[p].active = false;
+      Pages[p].active = false;
     }
     page.active = true;
     
@@ -343,8 +326,8 @@ var App = {
             $(this).html("READ MORE");
         });
 	},
-    darkhorseLogo: function(initial){
-    },
+  darkhorseLogo: function(initial){
+  },
 	intro: function(initial){
 		// TODO: Make all transitions consistent
 		/*$('.bg-div').remove();
@@ -434,35 +417,35 @@ var App = {
         App._initVideos(".world .content-box video");
     },
     _initVideos: function(rootSelector){
-        $(rootSelector).each(function(count, el){
-           var $el = $(el);
-           var id = $el.attr("id");
-           id = (id ? id : "video-" +(Math.floor(Math.random() * 1000) + ""));
-           $el.attr("id", id);
-           var player = videojs(id, {}, function(){
-               console.info("video ready: " + id);
-               var overlay = $("<div>").addClass("video-overlay");
-               var video = $("#"+id);
-               var overlayId = video.attr("id") + "-overlay";
-               overlay.attr("id", overlayId);
-               console.info("video.position(): " + video.position());
-               overlay.css({"top":video.position().top,"left":video.position().left,"width":video.width(),"height":video.height()});
-               overlayContent = $("<p>");
-               var videoEl = video.find("video");
-               var overlayText = videoEl.data("overlay") != null ? videoEl.data("overlay") : "";
-               overlayContent.html(overlayText);
-               overlay.append(overlayContent);
-               video.parent().append(overlay);
-               
-               this.on("play", function(){
-                    $("#"+overlayId).css({display: "none"});
-                });
-                this.on("pause", function(){
-                   $("#"+overlayId).css({display: ""});
-                });
+      $(rootSelector).each(function(count, el){
+       var $el = $(el);
+       var id = $el.attr("id");
+       id = (id ? id : "video-" +(Math.floor(Math.random() * 1000) + ""));
+       $el.attr("id", id);
+       var player = videojs(id, {}, function(){
+           console.info("video ready: " + id);
+           var overlay = $("<div>").addClass("video-overlay");
+           var video = $("#"+id);
+           var overlayId = video.attr("id") + "-overlay";
+           overlay.attr("id", overlayId);
+           console.info("video.position(): " + video.position());
+           overlay.css({"top":video.position().top,"left":video.position().left,"width":video.width(),"height":video.height()});
+           overlayContent = $("<p>");
+           var videoEl = video.find("video");
+           var overlayText = videoEl.data("overlay") != null ? videoEl.data("overlay") : "";
+           overlayContent.html(overlayText);
+           overlay.append(overlayContent);
+           video.parent().append(overlay);
+           
+           this.on("play", function(){
+                $("#"+overlayId).css({display: "none"});
+            });
+            this.on("pause", function(){
+               $("#"+overlayId).css({display: ""});
+            });
 
-           });
        });
+     });
     }
 }
 
