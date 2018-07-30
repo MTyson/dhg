@@ -267,186 +267,147 @@ var App = {
 	},
 	openContent: function(contentId){
 		$(".content-arrow").hide(800);
-		//$(".content-box:not(#"+contentId+")").hide(800);
 		var box = $('#'+contentId);
-        box.addClass("detail");
-        $(".content-box:not(#"+contentId+")").addClass("hidden");
-		//$(".content-box:not(#"+contentId+")").hide("drop", {direction:'down'}, 800, "easeOutQuart");
-/*
-        box.find('.img-wrap, img, video').animate({
-            width: 410,
-            height: 230
-        })	
+    box.addClass("detail");
+    $(".content-box:not(#"+contentId+")").addClass("hidden");
 
-        box.find('.summary').hide().promise().then(function(){
-            box.find('.content').show("blind", {direction: "vertical"},1000);
-        })
-*/
-        var btn = box.find('.button');
-  //      btn.show();
-        
-        btn.html('BACK').off('click').on('click', function(e){
-            var pageId = box.parent().attr("page-id");
-            var page = PageManager.getPageById(pageId);
-            var imgPad = 20;
-            $(".content-arrow").show(800);
-            $(this).off('click').on('click', function(e){
-                $(this).off('click');
-                App.openContent($(e.target).parent().prop("id"));
-            });
-            box.removeClass("detail");
-            $(".content-box.visible:not(#"+contentId+")").removeClass("hidden");
-            /*
-            box.animate({ // TODO: Share with Page._open
-                width: (page.smallBoxWidth), //page.thumbWidth,
-                height: (page.smallBoxHeight)
-                //width: box.hasClass('small') ? 210 : 270, //width: 210px; height: 190px;
-                //height: box.hasClass('small') ? 190 : 340
-            }).promise().then(function(){
-                box.find('.summary').show("blind", {direction: "vertical"},1000);
-                $(".content-box.visible:not(#"+contentId+")").show(800); /// ALERT
-            });
-            */
-            /*
-            box.find('.img-wrap, img, video').animate({
-                width: (page.smallBoxWidth - imgPad), //page.thumbWidth,
-                height: (page.smallBoxHeight / 2)
-                //margin: (imgPad / 2)
-                //width: box.hasClass('small') ? 200 : 260,
-                //height: box.hasClass('small') ? 140 : 160
-            })
-            */
-            if (box.find('video').length > 0){
-                box.find('video').get(0).pause();
-            }
-            //box.find('.content').hide();
-            if ($(this).hasClass('hidden')){
-                $(this).hide();
-            }
-            $(this).html("READ MORE");
-        });
+    var btn = box.find('.button');
+    
+    btn.html('BACK').off('click').on('click', function(e){
+      var pageId = box.parent().attr("page-id");
+      var page = PageManager.getPageById(pageId);
+      var imgPad = 20;
+      $(".content-arrow").show(800);
+      $(this).off('click').on('click', function(e){
+          $(this).off('click');
+          App.openContent($(e.target).parent().prop("id"));
+      });
+      box.removeClass("detail");
+      $(".content-box.visible:not(#"+contentId+")").removeClass("hidden");
+
+      if (box.find('video').length > 0){
+          box.find('video').get(0).pause();
+      }
+      if ($(this).hasClass('hidden')){
+          $(this).hide();
+      }
+      $(this).html("READ MORE");
+    });
 	},
   darkhorseLogo: function(initial){
   },
 	intro: function(initial){
 		// TODO: Make all transitions consistent
-		/*$('.bg-div').remove();
-		if (initial){
-			this.openBlinds().then(App.darkhorseLogo);
-		} else {
-			App.darkhorseLogo(initial);
-		}
-        */
-        if (window.currentAudio && window.currentAudio.pause) window.currentAudio.pause();
-        window.currentAudio = new Audio('audio/darkhorse-theme.mp3');
-        window.currentAudio.volume = .8;
-        window.currentAudio.play();
-        var dhLogo = $('<img src="images/dh-logo-2.jpg" style="max-height: 75vh; min-height:360px; display: none;" id="darkhorse-logo"/>'); // TODO: Move styles to .css
-        $(".content-wrap").css({"display":"none"});
-        $(".bg-div").append(dhLogo);
-        
+    if (window.currentAudio && window.currentAudio.pause) window.currentAudio.pause();
+    window.currentAudio = new Audio('audio/darkhorse-theme.mp3');
+    window.currentAudio.volume = .8;
+    window.currentAudio.play();
+    var dhLogo = $('<img src="images/dh-logo-2.jpg" style="max-height: 75vh; min-height:360px; display: none;" id="darkhorse-logo"/>'); // TODO: Move styles to .css
+    $(".content-wrap").css({"display":"none"});
+    $(".bg-div").append(dhLogo);
+    
+    setTimeout(function(){
+        $("#darkhorse-logo").fadeIn(4000, "easeInSine");
         setTimeout(function(){
-            $("#darkhorse-logo").fadeIn(4000, "easeInSine");
-            setTimeout(function(){
 
-                $("#darkhorse-logo").fadeOut(500, "easeOutSine", function(){
-                    App.navigate();
-                });
-               
-            }, 5000);
-        }, 2000);
+            $("#darkhorse-logo").fadeOut(500, "easeOutSine", function(){
+                App.navigate();
+            });
+           
+        }, 5000);
+    }, 2000);
 	},
-    afterOverview: function(){
-        if (window.currentAudio && window.currentAudio.pause) window.currentAudio.pause();
-        window.currentAudio = new Audio('audio/harrison-darkhorse-short.mp3');
-        window.currentAudio.volume = .6;
-        window.currentAudio.play();
-       /*setTimeout(function(){
-           $("#overview").hide('slide', {direction: 'left'}, 500, function(){
-               App.navigate();
-           });
-       }, 3500);   */
-       //window.afterglow.init();
-       //plyr.setup("#harrison-darkhorse");
-       videojs("harrison-darkhorse", {
-        children: {
-         controlBar: {
+  afterOverview: function(){
+    if (window.currentAudio && window.currentAudio.pause) window.currentAudio.pause();
+    window.currentAudio = new Audio('audio/harrison-darkhorse-short.mp3');
+    window.currentAudio.volume = .6;
+    window.currentAudio.play();
+   /*setTimeout(function(){
+       $("#overview").hide('slide', {direction: 'left'}, 500, function(){
+           App.navigate();
+       });
+   }, 3500);   */
+   //window.afterglow.init();
+   //plyr.setup("#harrison-darkhorse");
+   videojs("harrison-darkhorse", {
+    children: {
+     controlBar: {
+       children: {
+         playToggle: true,
+         fullscreenToggle: true,
+         currentTimeDisplay: false,
+         timeDivider: false,
+         durationDisplay: false,
+         remainingTimeDisplay: true,
+         muteToggle: false,
+         progressControl: {
            children: {
-             playToggle: true,
-             fullscreenToggle: true,
-             currentTimeDisplay: false,
-             timeDivider: false,
-             durationDisplay: false,
-             remainingTimeDisplay: true,
-             muteToggle: false,
-             progressControl: {
-               children: {
-                 seekBar: {
-                     
-                 }
-               }
+             seekBar: {
+                 
              }
            }
          }
-        }
-        }, function(){
-            console.log("vid: " + this);
-            this.on("play", function(){
-                window.currentAudio.play();
-            });
-            //this.on("pause", function(){
-            //   window.currentAudio.pause();
-            //});
-            this.controlBar.playToggle.on("click", function(){
-                window.currentAudio.pause();
-            });
-        });
-        var overviewText = $(".overview .text");
-        var ovTextRight = overviewText.offset().left + overviewText.width();
-        var contentArrow = $(".overview .content-arrow");
-        contentArrow.css({left: (ovTextRight+contentArrow.width())});
-        
-        var arrow = $("<div class='content-arrow' style='position: absolute;' onclick='App.navigate()'>&gt;</div>");
-        arrow.css({"right":"10px"})
-        $(".bg-div").append(arrow);
-    },
-    afterExpand: function(){
-       App._initVideos(".expand .content-box video");
-    },
-    afterWorld: function(){
-        App._initVideos(".world .content-box video");
-    },
-    _initVideos: function(rootSelector){
-      $(rootSelector).each(function(count, el){
-       var $el = $(el);
-       var id = $el.attr("id");
-       id = (id ? id : "video-" +(Math.floor(Math.random() * 1000) + ""));
-       $el.attr("id", id);
-       var player = videojs(id, {}, function(){
-           console.info("video ready: " + id);
-           var overlay = $("<div>").addClass("video-overlay");
-           var video = $("#"+id);
-           var overlayId = video.attr("id") + "-overlay";
-           overlay.attr("id", overlayId);
-           console.info("video.position(): " + video.position());
-           overlay.css({"top":video.position().top,"left":video.position().left,"width":video.width(),"height":video.height()});
-           overlayContent = $("<p>");
-           var videoEl = video.find("video");
-           var overlayText = videoEl.data("overlay") != null ? videoEl.data("overlay") : "";
-           overlayContent.html(overlayText);
-           overlay.append(overlayContent);
-           video.parent().append(overlay);
-           
-           this.on("play", function(){
-                $("#"+overlayId).css({display: "none"});
-            });
-            this.on("pause", function(){
-               $("#"+overlayId).css({display: ""});
-            });
-
-       });
-     });
+       }
+     }
     }
+    }, function(){
+        console.log("vid: " + this);
+        this.on("play", function(){
+            window.currentAudio.play();
+        });
+        //this.on("pause", function(){
+        //   window.currentAudio.pause();
+        //});
+        this.controlBar.playToggle.on("click", function(){
+            window.currentAudio.pause();
+        });
+    });
+    var overviewText = $(".overview .text");
+    var ovTextRight = overviewText.offset().left + overviewText.width();
+    var contentArrow = $(".overview .content-arrow");
+    contentArrow.css({left: (ovTextRight+contentArrow.width())});
+    
+    var arrow = $("<div class='content-arrow' style='position: absolute;' onclick='App.navigate()'>&gt;</div>");
+    arrow.css({"right":"10px"})
+    $(".bg-div").append(arrow);
+  },
+  afterExpand: function(){
+     App._initVideos(".expand .content-box video");
+  },
+  afterWorld: function(){
+      App._initVideos(".world .content-box video");
+  },
+  _initVideos: function(rootSelector){
+    $(rootSelector).each(function(count, el){
+     var $el = $(el);
+     var id = $el.attr("id");
+     id = (id ? id : "video-" +(Math.floor(Math.random() * 1000) + ""));
+     $el.attr("id", id);
+     var player = videojs(id, {}, function(){
+         console.info("video ready: " + id);
+         var overlay = $("<div>").addClass("video-overlay");
+         var video = $("#"+id);
+         var overlayId = video.attr("id") + "-overlay";
+         overlay.attr("id", overlayId);
+         console.info("video.position(): " + video.position());
+         overlay.css({"top":video.position().top,"left":video.position().left,"width":video.width(),"height":video.height()});
+         overlayContent = $("<p>");
+         var videoEl = video.find("video");
+         var overlayText = videoEl.data("overlay") != null ? videoEl.data("overlay") : "";
+         overlayContent.html(overlayText);
+         overlay.append(overlayContent);
+         video.parent().append(overlay);
+         
+         this.on("play", function(){
+              $("#"+overlayId).css({display: "none"});
+          });
+          this.on("pause", function(){
+             $("#"+overlayId).css({display: ""});
+          });
+
+     });
+   });
+  }
 }
 
 // small box: 270x340
@@ -455,22 +416,22 @@ var App = {
 // large content images = 410x230 (+ 5 padding all around
 function Page() {
 	this.minWidth = 940;
-    this.wrapWidth = null;
+  this.wrapWidth = null;
 	this.wrapJustify = null;
-    this.boxCount = null;
+  this.boxCount = null;
 	this.maxBoxes = null;
-    this.smallBoxWidth = null;
-    this.smallBoxHeight = null;
-    this.thumbWidth = null;
-    this.thumbHeight = null;
+  this.smallBoxWidth = null;
+  this.smallBoxHeight = null;
+  this.thumbWidth = null;
+  this.thumbHeight = null;
 	for (var n in arguments[0]) { this[n] = arguments[0][n]; }
-    this.path = [];
+  this.path = [];
 }
 Page.prototype.setPath = function(path){
-    this.path = path;
+  this.path = path;
 }
 Page.prototype.doPath = function(){
-    // no op default
+  // no op default
 }
 Page.prototype.open = function(){
   console.info("BEGIN Page.open");
@@ -518,7 +479,7 @@ Page.prototype._openAfterBgLoad = function(){
 		if (page.intro){
       page.intro(this);
     } else {
-       page._openAfterBlind();
+      page._openAfterBlind();
     }
 	});
     
@@ -545,24 +506,7 @@ Page.prototype._openAfterBlind = function(){
     })
     $('.bg-div').append(contentWrap);
     
-    if (page.maxBoxes){
-      /*
-      var arrow = $("<div class='content-arrow'>&lt;</div>");
-      arrow.on('click', function(e){
-          var edgeVisible = $('.content-box.visible').first(),
-              toShow = $('.content-box').eq(Number(edgeVisible.attr('box-count')) - 1);
-          if (Number(edgeVisible.attr('box-count')) - 1 >= 0){					
-              $('.content-box.visible').last().hide("blind", {direction:"left"}, 600, 'easeOutQuart').removeClass('visible');
-              toShow.show("blind", {direction:"left"}, 600, 'easeOutQuart').addClass('visible');
-          }
-      })
-      contentWrap.append(arrow);
-      */
-    }
-    
-    if (page.init){
-      page.init();
-    }
+    if (page.init){ page.init(); }
 
     // set content
     if (page.html){
@@ -575,7 +519,7 @@ Page.prototype._openAfterBlind = function(){
             
         box.attr('box-count', x);
         if (Number(x) === (page.content.length-1)){
-            box.attr('box-last', "true");
+          box.attr('box-last', "true");
         }
         
         if (page.content[x].image){
@@ -584,127 +528,83 @@ Page.prototype._openAfterBlind = function(){
           img.attr("src", src);
           
           var imgPad = 20;
-          
-          var imgWrap = $("<div />").addClass('img-wrap').css({
-            // width: (page.smallBoxWidth - imgPad), //page.thumbWidth,
-            //height: (page.smallBoxHeight / 2),
-            //margin: (imgPad / 2)
-            //width: box.hasClass('small') ? 210 : 270, //width: 210px; height: 190px;
-            //height: box.hasClass('small') ? 190 : 340
-          });
-            
-            /*
-            if (typeof page.content[x].image === "object"){
-                img.css({
-                    //width: page.content[x].image.width,
-                    //height: page.content[x].image.height
-                    height: "100%"
-                })
-                imgWrap.css({
-                    width: page.content[x].image.width,
-                    height: page.content[x].image.height
-                })
-                /*img.on('click', function(){
-                    page.content[x].image.onClick($(this).parent().prop('id'));
-                });
-                
-            }
-            imgWrap.on('click', function(){
-                App.openContent($(this).parent().attr('id'));
-            });
-            */
-            imgWrap.append(img);
-            box.append(imgWrap);
+          var imgWrap = $("<div />").addClass('img-wrap').css({ });
+          imgWrap.append(img);
+          box.append(imgWrap);
         }
         if (page.content[x].video){
-            var imgWrap = $("<div />").addClass('img-wrap');
-            imgWrap.css({
-                width: page.content[x].video.width,
-                height: page.content[x].video.height
-            })
-            box.append(imgWrap);
-            
-            var video = $('<video id="example_video_1" class="video-js vjs-default-skin" ' +
-              'controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'" ' +
-              'poster="'+page.content[x].video.thumb+'"> ' +
-              '<source src="'+page.content[x].video.src+'" type="video/webm"/> ' +
-              '<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" /> ' +
-              '<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" /> ' +
-              '</video>');
-              /*
-            var video = $('<video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'"></video>');
-            player = videojs('my_video_1', {
-                techOrder: ['flash', 'html5'],
-                autoplay: false,
-                sources: [{ 
-                    type: "video/flv",
-                    src: "http://www.longtailvideo.com/jw/upload/bunny.flv"
-                }]
-            });
-            */
-            
-            imgWrap.append(video);
-            
-            imgWrap.on('click', function(){
-                App.openContent($(this).parent().attr('id'));
-            });
+          var imgWrap = $("<div />").addClass('img-wrap');
+          imgWrap.css({
+            width: page.content[x].video.width,
+            height: page.content[x].video.height
+          })
+          box.append(imgWrap);
+          
+          var video = $('<video id="example_video_1" class="video-js vjs-default-skin" ' +
+            'controls preload="auto" width="'+page.content[x].video.width+'" height="'+page.content[x].video.height+'" ' +
+            'poster="'+page.content[x].video.thumb+'"> ' +
+            '<source src="'+page.content[x].video.src+'" type="video/webm"/> ' +
+            '<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" /> ' +
+            '<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" /> ' +
+            '</video>');
+          
+          imgWrap.append(video);
+          
+          imgWrap.on('click', function(){
+            App.openContent($(this).parent().attr('id'));
+          });
         }
         
         if (page.content[x].title)
-            box.append("<p class='title'>"+page.content[x].title+"</p>");
+          box.append("<p class='title'>"+page.content[x].title+"</p>");
         if (page.content[x].subtitle)
-            box.append("<p class='subtitle'>"+page.content[x].subtitle+"</p>");
+          box.append("<p class='subtitle'>"+page.content[x].subtitle+"</p>");
         if (page.content[x].summary)
-            box.append("<p class='summary'>"+page.content[x].summary+"</p>");
+          box.append("<p class='summary'>"+page.content[x].summary+"</p>");
         if (page.content[x].content)
-            box.append("<div class='content'>"+page.content[x].content+"</div>");
+          box.append("<div class='content'>"+page.content[x].content+"</div>");
         if (page.button){
-            var btn = $("<div class='button'>READ MORE</div>");
-            if (page.button === "hidden"){
-                btn.addClass('hidden');
-            }
-            btn.on('click', function(e){
-                $(this).off('click');
-                App.openContent($(e.target).parent().prop("id"));
-            });
-            box.append(btn);
+          var btn = $("<div class='button'>READ MORE</div>");
+          if (page.button === "hidden"){
+            btn.addClass('hidden');
+          }
+          btn.on('click', function(e){
+            $(this).off('click');
+            App.openContent($(e.target).parent().prop("id"));
+          });
+          box.append(btn);
         }
         
-        contentWrap.append(box);
-        //$('#bg-div').append(box);					
+        contentWrap.append(box);				
       }
     }
     
     if (page.maxBoxes){
-        var arrow = $("<div class='content-arrow'>&gt;</div>");
-        arrow.on('click', function(e){
-            // TODO: ALERT: Hijacked this to make page navigation on arrows
-            App.navigate(); return;
-            var lastVisible = $('.content-box.visible').last(),
-                isLast = lastVisible.attr('box-last'),
-                lastCount = lastVisible.attr('box-count');
-            console.info('lastCount: ' + lastCount);
-            if (!isLast){
-                $('.content-box.visible').first().hide("blind", {direction:"left"}, 600, 'easeOutQuart').removeClass('visible');
-                $('.content-box').eq(new Number(lastCount)+1).show("blind", {direction:"left"}, 600, 'easeOutQuart').addClass('visible');
-            }
-        })
-        contentWrap.append(arrow);
+      var arrow = $("<div class='content-arrow'>&gt;</div>");
+      arrow.on('click', function(e){
+        // TODO: ALERT: Hijacked this to make page navigation on arrows
+        App.navigate(); return;
+        var lastVisible = $('.content-box.visible').last(),
+            isLast = lastVisible.attr('box-last'),
+            lastCount = lastVisible.attr('box-count');
+        console.info('lastCount: ' + lastCount);
+        if (!isLast){
+            $('.content-box.visible').first().hide("blind", {direction:"left"}, 600, 'easeOutQuart').removeClass('visible');
+            $('.content-box').eq(new Number(lastCount)+1).show("blind", {direction:"left"}, 600, 'easeOutQuart').addClass('visible');
+        }
+      })
+      contentWrap.append(arrow);
     }
     
     var boxSelector = '.content-box' + (page.contentClass ? "."+page.contentClass : "");
     $(boxSelector).slice(0, page.maxBoxes ? page.maxBoxes : 1000).each(function(x, e){
         $(e).addClass('visible');
     });
-    /*.fadeIn().promise().then( function(){
-        $(boxSelector + ' img.preview').show('blind', {direction:'left'});
-    });
-    */
   
     if (page.functions){
-        for (x in page.functions){
-            page.functions[x]();
-        }
+      for (x in page.functions){
+        page.functions[x]();
+      }
     }
     this.resize();
     this.doPath();
@@ -720,36 +620,21 @@ Page.prototype.resize = function(){
 	var boxPadding = 10,
 		pagingArrows = 100;
 	var boxW = (viewW / this.boxCount) - (boxPadding + this.boxCount) - pagingArrows;
-/*
-	$('.content-box').animate({
-		'width': boxW
-		//,'height': h
-	});
-    */
-    /*
-	var origImgW = this.thumbWidth,
-		origImgH = this.thumbHeight,
-		imgRatio = origImgW / origImgH;
-	$('.content-box .img-wrap, .content-box img').css({
-		'width': boxW-10
-		//,'height': (w / imgRatio) - 10
-	})
-    */
 }
 var PageManager = {
-    getPageById: function(id){
-        for (var p in Pages){
-            if (Pages[p].id == id){
-                return Pages[p];
-            }
-        }
+  getPageById: function(id){
+    for (var p in Pages){
+      if (Pages[p].id == id){
+        return Pages[p];
+      }
     }
+  }
 }
 // TODO: Auto-calculate the ID
 var Pages = {
 	"intro": new Page({
 		id: 1,
-        wrapClass: "intro",
+    wrapClass: "intro",
 		//bg: "images/slate-gradient-1425x960-60.jpg",
 		functions: [
 			App.intro.bind(App)
@@ -759,21 +644,20 @@ var Pages = {
     "overview": new Page({
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
-        wrapClass: "overview",
+    wrapClass: "overview",
 		html: //"<div id='overview'>"+
     "<div class='content-box text'><h2 style='margin-top: .6em;'>dark horse tek &ensp;<br> /ˈdärk ˈˌhôrs tek/</h2><h3>Definition: <span style='margin-bottom: 0px;font-style:italic;'> noun</span></h3>" +
-          "<p style='margin-top: .9em; margin-bottom: .6em'>A dark horse is a little-known person or thing that emerges to prominence, especially in a competition of some sort, or a contestant that seems unlikely to succeed.</p><p>Unlike traditional unicorns, darkhorse.tech consistently embodies and delivers on the promise of excellence and success, creating platinum level, dynamic technologies that empower its users, its investors and the world.</p>"+
+      "<p style='margin-top: .9em; margin-bottom: .6em'>A dark horse is a little-known person or thing that emerges to prominence, especially in a competition of some sort, or a contestant that seems unlikely to succeed.</p><p>Unlike traditional unicorns, darkhorse.tech consistently embodies and delivers on the promise of excellence and success, creating platinum level, dynamic technologies that empower its users, its investors and the world.</p>"+
     "</div>"+
-          "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
-            "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
-            "<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>" + 
+      "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
+        "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
+          "<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>" + 
       "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
      // "</div>",
       functions: [
-         App.afterOverview
+       App.afterOverview
       ]
 	}),
-
     /*
     style=\"\r\n" + 
 				"    display: block;\r\n" + 

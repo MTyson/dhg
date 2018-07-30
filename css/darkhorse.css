@@ -488,86 +488,89 @@ div#spinner::before {
 }
 
   /** WORLD **/
-
 .world {
-    justify-content: space-around;
-    align-content: center;
+  justify-content: space-around;
+  align-content: center;
+}
+.content-wrap.world {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 div.world .content-box.text {
-    width: 100%; 
-    height: 33vh; 
-    padding: 1em;
-    font-size:1.7em;
-    margin-bottom: 15px;
-    padding: 1em;
-    overflow-y:auto;
-    margin-right: 45px;
-    margin-left: 45px;
+  width: 100%; 
+  height: 33vh; 
+  font-size:1.7em;
+  margin-bottom: 15px;
+  overflow-y:auto;
+  /*margin-right: 45px;
+  margin-left: 45px;
+  padding: 1em;*/
+  padding: 0;
 }
-div.world .content-box.visible {
+div.world .content-box.text p {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+div.world .content-box.visible {}
+div.world .video-holder {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  
+  background-color: transparent; box-shadow: none; width: 100%;
+  height: 33vh;
 
 }
-div.world .video-holder {
+div.world .content-box.video {
+  /*height: 175px; */
+  max-height: 215px;
+  width: 33%;
+  /*padding: 2%;
+  margin-right: 1em;*/
+  top: 50%;
+  transform: translateY(-50%);
+  position relative;
+}
+div.world .content-box.video:last-child {
+  margin-right: 0px;
+}
+div.world video {
+  /*box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5);*/
+}
+@media only screen and (min-width: 320px) and (max-width: 479px){ /* cell phone portrait */
+  div.bg-div.world {
+    width: 90%;
+    justify-content: space-around;
+    align-content: flex-start;
+  }
+  div.world .content-box.text {
+    width: 80%;
+    height: 40vh; 
+    font-size:1.5em;
+  }
+  div.world .video-holder {
+    width: 100%;
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
-    flex-direction: row;
-    -webkit-flex-direction: row;
+
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
     
     background-color: transparent; box-shadow: none; width: 100%;
-    height: 33vh;
-    margin-top: 10px;
-    margin-left: 45px;
-    margin-right: 45px;
-}
-div.world .content-box.video {
-    /*height: 175px; */
-    max-height: 215px;
-    width: 33%;
-    padding: 2%;
-    margin-right: 1em;
-    top: 50%;
-    transform: translateY(-50%);
-    position relative;
-}
-div.world .content-box.video:last-child {
+  }
+  div.world .video-holder .content-box.video {
+    width: 80%;
     margin-right: 0px;
-}
-div.world video {
-    /*box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5);*/
-}
-@media only screen and (min-width: 320px) and (max-width: 479px){ /* cell phone portrait */
-    div.bg-div.world {
-        width: 90%;
-        justify-content: space-around;
-        align-content: flex-start;
-    }
-    div.world .content-box.text {
-        width: 80%;
-        height: 40vh; 
-        font-size:1.5em;
-    }
-    div.world .video-holder {
-        width: 100%;
-        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-        display: -ms-flexbox;      /* TWEENER - IE 10 */
-        display: -webkit-flex;     /* NEW - Chrome */
-        display: flex;
-    
-        flex-direction: column;
-        -webkit-flex-direction: column;
-        align-items: center;
-        -webkit-align-items: center;
-        
-        background-color: transparent; box-shadow: none; width: 100%;
-    }
-    div.world .video-holder .content-box.video {
-        width: 80%;
-        margin-right: 0px;
-    }
+  }
 } 
 @media only screen and (min-width: 479px) and (max-width: 767px){ /* cell phone landscape */
     div.world {
