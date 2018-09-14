@@ -329,6 +329,8 @@ var App = {
    }, 3500);   */
    //window.afterglow.init();
    //plyr.setup("#harrison-darkhorse");
+   
+   /*
    videojs("harrison-darkhorse", {
     children: {
      controlBar: {
@@ -340,13 +342,7 @@ var App = {
          durationDisplay: false,
          remainingTimeDisplay: true,
          muteToggle: false,
-         progressControl: {
-           children: {
-             seekBar: {
-                 
-             }
-           }
-         }
+         progressControl: { children: { seekBar: { } } }
        }
      }
     }
@@ -362,6 +358,8 @@ var App = {
             window.currentAudio.pause();
         });
     });
+    */
+    
     var overviewText = $(".overview .text");
     var ovTextRight = overviewText.offset().left + overviewText.width();
     var contentArrow = $(".overview .content-arrow");
@@ -641,7 +639,7 @@ var Pages = {
 		],
     active: true
 	}),
-    "overview": new Page({
+  "overview": new Page({
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
     wrapClass: "overview",
@@ -651,7 +649,7 @@ var Pages = {
     "</div>"+
       "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
         "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
-          "<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>" + 
+          "<!--<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>-->" + 
       "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
      // "</div>",
       functions: [
