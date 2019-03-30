@@ -241,7 +241,7 @@ var App = {
           }
       }
     }
-    if (!target) target = Pages.intro;
+    if (!target) target = "INTRO";
     console.info("calculated target: " + target);
 		
     $('.bg-div').hide("clip", {direction: "vertical"}, 1000, "easeOutQuart").promise().then(function(){
