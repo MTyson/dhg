@@ -116,62 +116,6 @@ body{
 #darkhorse-logo {
     box-shadow: 0px 0px 43px 19px rgba(0,0,0,0.90); 
 }
-#bottom-bar {
-    position: fixed;
-    z-index: 100; 
-    bottom: 0; 
-    left: 0;
-    width: 100%;
-	height: 35px;
-	background-color: rgba(9,9,9,.9);
-	color: white;
-	text-align: center;
-    font-family: arial;
-	font-size: 14px;
-    transition: all .1s linear;  
-    cursor: pointer;
-}
-@media screen and (max-width: 479px){
-    #bottom-bar, #bottom-bar:hover {
-        height: 28px;
-        background-color: rgba(9,9,9,1);
-        font-size: 13px;
-        font-weight: bold;
-    }
-}
-@media only screen and (min-width: 480px) and (max-width: 767px){
-    #bottom-bar, #bottom-bar:hover {
-        height: 25px;
-        background-color: rgba(9,9,9,1);
-        font-size: 17px;
-        font-weight: bold;
-    }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px){
-    #bottom-bar, #bottom-bar:hover {
-        height: 28px;
-        background-color: rgba(9,9,9,1);
-        font-size: 19px;
-        font-weight: bold;
-    }
-}
-span#bottom-menu {
-
-}
-span.bottom-item {
-	padding-right: 5px;
-	padding-left: 5px;
-	height: 5;
-	cursor: pointer;
-}
-span.bottom-item.divider{
-	border-style: none;
-	border-width: 0px;
-	border-right: 1px solid white;
-}
-span.bottom-item.selected{
-	background-color: red;
-}
 div.blind {
 	/* This image will be displayed fullscreen */
     background:url('backgrounds/image1.jpg') no-repeat center center;
@@ -665,7 +609,7 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
 }
 @media only screen and (min-width: 320px) and (max-width: 479px){ /* phone portrait */
     div.bg-div.home {
-        align-content: center;
+      align-content: center;
     }
     div.home .content-wrap {
       flex-direction: column;
@@ -674,15 +618,15 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
       -webkit-align-items: center;
     }
     div.home .content-box {
-        height: 28vh;
-        margin-right: 0px;
-        margin-top: 15px;
+      height: 28vh;
+      margin-right: 0px;
+      margin-top: 15px;
     }
     div.home .content-box .img-wrap{
-        display: none;
-        height: 0px;
-        -webkit-transition: all .8s;
-        transition: all .1s;
+      display: none;
+      height: 0px;
+      -webkit-transition: all .8s;
+      transition: all .1s;
     }
     div.home .content-box .content{
       min-height: 40%;
@@ -746,42 +690,105 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
 @media only screen and (min-width: 992px) and (max-width: 1999px){ /* desktop */
  } 
     
-/* NAV */
+/* NAV: Arrows and Menu */
 .showcase-nav.next {
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
-    right: 0;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  right: 0;
 }
 .showcase-nav {
-    background: rgba(13, 13, 13, 0.6) none repeat scroll 0 0;
-    height: 56px;
-    margin-top: -25px;
-    overflow: hidden;
-    position: fixed;
-    top: 50%;
-    z-index: 9999;
-    cursor: pointer;
+  background: rgba(13, 13, 13, 0.6) none repeat scroll 0 0;
+  height: 56px;
+  margin-top: -25px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  z-index: 9999;
+  cursor: pointer;
 }
     
 .showcase-nav.next .arrow {
-    background-image: url("../images/button-arrow-light.png");
-    float: right;
+  background-image: url("../images/button-arrow-light.png");
+  float: right;
 }
 .showcase-nav .arrow {
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    height: 56px;
-    width: 40px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height: 56px;
+  width: 40px;
 }
 
 .showcase-nav.previous {
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
-    left: 0;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  left: 0;
 }
 .showcase-nav.previous .arrow {
-    background-image: url("http://static.pictorymag.com/assets/img/button-arrow-light-reverse.png");
-    float: left;
+  background-image: url("http://static.pictorymag.com/assets/img/button-arrow-light-reverse.png");
+  float: left;
+}
+
+#bottom-bar {
+  position: fixed;
+  z-index: 100; 
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+	height: 35px;
+	background-color: rgba(9,9,9,.9);
+	color: white;
+	text-align: center;
+  font-family: arial;
+	font-size: 14px;
+  transition: all .1s linear;  
+  cursor: pointer;
+}
+@media screen and (max-width: 479px){
+  #bottom-bar, #bottom-bar:hover {
+    height: 28px;
+    background-color: rgba(9,9,9,1);
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+  #bottom-bar, #bottom-bar:hover {
+    height: 25px;
+    background-color: rgba(9,9,9,1);
+    font-size: 17px;
+    font-weight: bold;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  #bottom-bar, #bottom-bar:hover {
+    height: 28px;
+    background-color: rgba(9,9,9,1);
+    font-size: 19px;
+    font-weight: bold;
+  }
+}
+span#bottom-menu {
+
+}
+span.bottom-item {
+	padding-right: 15px;
+	padding-left: 15px;
+	cursor: pointer;
+}
+span.bottom-item.divider{
+	border-style: none;
+	border-width: 0px;
+	border-right: 1px solid white;
+}
+span.bottom-item.selected{
+	background-color: red;
+}
+@media screen and (max-width: 479px){
+  span.bottom-item {
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+  }
 }
 /*
 @media only screen and (max-width: 800px){
