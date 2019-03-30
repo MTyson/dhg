@@ -605,7 +605,6 @@ div.world video {
 @media only screen and (min-width: 992px) and (max-width: 1999px){ /* desktop */ } 
 
 /** HOME **/
-
 div.home .content-box {
     width: 30%; 
     min-width: 300px;
@@ -667,6 +666,12 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
 @media only screen and (min-width: 320px) and (max-width: 479px){ /* phone portrait */
     div.bg-div.home {
         align-content: center;
+    }
+    div.home .content-wrap {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      align-items: center;
+      -webkit-align-items: center;
     }
     div.home .content-box {
         height: 28vh;
