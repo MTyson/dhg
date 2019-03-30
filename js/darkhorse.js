@@ -130,7 +130,15 @@ var App = {
                     App.navigate(); 
                 }
             });  
+          $(".showcase-nav.previous").click(function() { 
+            App.navigate(); 
+          });
+    
+          $(".showcase-nav.next").click(function() { 
+            App.navigate(); 
+          });
         }
+        
         App.navAttached = true;
     },
 	pageTransition: function(){
@@ -215,6 +223,26 @@ var App = {
 	},
 	navigate: function(target){	
     console.info("target: "+ target);
+    
+    if (!target){
+      var nextIsActive = false;
+      for (var p in Pages){
+          if (nextIsActive){
+            target = p;
+            break;
+          } else if (Pages[p].active){
+            nextIsActive = true;
+          } 
+      }
+      if (!nextIsActive){
+          for (var p in Pages){
+            target = p;
+            break;
+          }
+      }
+    }
+    if (!target) target = Pages.intro;
+    console.info("calculated target: " + target);
 		
     $('.bg-div').hide("clip", {direction: "vertical"}, 1000, "easeOutQuart").promise().then(function(){
       $(".intro").remove();
@@ -225,25 +253,6 @@ var App = {
 	},
 	openPage: function(target){
 		var viewW = $(window).width(), viewH = $(window).height();
-		
-    if (!target){
-      var nextIsActive = false;
-      for (var p in Pages){
-          if (nextIsActive){
-              target = p;
-              break;
-          } else if (Pages[p].active){
-              nextIsActive = true;
-          } 
-      }
-      if (!nextIsActive){
-          for (var p in Pages){
-              target = p;
-              break;
-          }
-      }
-    }
-    console.info("calculated target: " + target);
     
     var targetParts = target.split(":");
     target = targetParts[0];
@@ -364,10 +373,6 @@ var App = {
     var ovTextRight = overviewText.offset().left + overviewText.width();
     var contentArrow = $(".overview .content-arrow");
     contentArrow.css({left: (ovTextRight+contentArrow.width())});
-    
-    var arrow = $("<div class='content-arrow' style='position: absolute;' onclick='App.navigate()'>&gt;</div>");
-    arrow.css({"right":"10px"})
-    $(".bg-div").append(arrow);
   },
   afterExpand: function(){
      App._initVideos(".expand .content-box video");
@@ -874,7 +879,8 @@ $(document).ready(function () {
      
     var pageName = $.fn.urlHash();
     pageName = pageName ? pageName : "intro";
-    App.openPage(pageName);      
+    App.openPage(pageName);   
+    
     //Pages["intro"].open();
     
     /*
