@@ -737,11 +737,12 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
 	height: 35px;
 	background-color: rgba(9,9,9,.9);
 	color: white;
-	text-align: center;
+  text-align: center;
   font-family: arial;
-	font-size: 14px;
+  font-size: 14px;
   transition: all .1s linear;  
   cursor: pointer;
+  display: table;
 }
 @media screen and (max-width: 479px){
   #bottom-bar, #bottom-bar:hover {
@@ -768,7 +769,9 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
   }
 }
 span#bottom-menu {
-
+  position: relative;
+  display: table-cell; /* TODO: Center with real css */
+  vertical-align: middle;
 }
 span.bottom-item {
 	padding-right: 15px;
