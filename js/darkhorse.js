@@ -687,7 +687,7 @@ var Pages = {
       }
     },//+ "<a href='#' onclick='App.openContent(\"development\");return false;'>MORE</a>"
 		content: [
-			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Helping you decipher and discover, deeper drives and desires, helping you express yourself in the world and on the web.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." },
+			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Helping you uncover deeper drives and desires, to express yourself in the world and on the web.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." },
 			{ id: "articles", image: "images/darkhorsearticles-500.jpg", title: "ARTICLES", subtitle: "IN DEPTH", summary: "Read some of our articles that have been featured on the cover of JavaWorld and IBM's developerWorks, and other articles of interest.", content: "<div style='text-align:left;'><h3>IBM's developerWorks</h3>"+            
         "<p><a href='http://www.ibm.com/developerworks/opensource/library/j-use-elasticsearch-java-apps/index.html'>Elastic Search, Java and the Cloud</a></p>"+
         "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue1-bluemix/index.html'>Vue.js in the Cloud</a></p>"+
