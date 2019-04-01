@@ -300,7 +300,7 @@ var App = {
       if ($(this).hasClass('hidden')){
           $(this).hide();
       }
-      $(this).html("READ MORE");
+      $(this).html("...MORE");
     });
 	},
   darkhorseLogo: function(initial){
@@ -518,6 +518,7 @@ Page.prototype._openAfterBlind = function(){
       for (x in page.content){
         var box = $("<div />").addClass('content-box').addClass(page.contentClass).prop("id", page.content[x].id).css({
           //width: page.smallBoxWidth, height: page.smallBoxHeight
+          cursor: "pointer"
         });
             
         box.attr('box-count', x);
@@ -567,7 +568,7 @@ Page.prototype._openAfterBlind = function(){
         if (page.content[x].content)
           box.append("<div class='content'>"+page.content[x].content+"</div>");
         if (page.button){
-          var btn = $("<div class='button'>READ MORE</div>");
+          var btn = $("<div class='button'>...MORE</div>");
           if (page.button === "hidden"){
             btn.addClass('hidden');
           }
@@ -575,6 +576,10 @@ Page.prototype._openAfterBlind = function(){
             $(this).off('click');
             App.openContent($(e.target).parent().prop("id"));
           });
+          /*box.on('click', function(e){
+            $(this).off('click');
+            App.openContent($(e.target).parent().prop("id"));
+          });*/
           box.append(btn);
         }
         
@@ -743,7 +748,7 @@ var Pages = {
        functions: [
                    App.afterWorld
                 ]
-	}),
+	})/*,
     "expand": new Page({
 		id: 4,
         wrapClass:"expand",
@@ -766,13 +771,7 @@ var Pages = {
                       "<source src='video/Wayne Dyer 10 principles.webm' type='video/webm'/>" +
                     "</video>"+
                   "</div>"+
-                  /*
-                  "<div class='content-box video'>"+
-                    "<video id='' class='afterglow' controls preload='auto' width='' height='100%' poster='video/home-poster.jpeg'>"+
-                      "<source src='video/HOME.webm' type='video/webm'/>" +
-                    "</video>"+
-                  "</div>"+
-                  */
+
                   "<div class='content-box video'>"+
                     "<video id='expand4' class='video-js vjs-default-skin vjs-big-play-centered' data-overlay='Elvis Comeback' controls preload='auto' width='' height='100%' poster='video/elvis.jpg'>"+
                       "<source src='video/elvis-comeback.mp3' type='video/webm'/>" +
@@ -787,7 +786,7 @@ var Pages = {
                 functions: [
                    App.afterExpand
                 ]
-	}),
+	}),*/
     /*
      "expand": new Page({
 		id: 5,
