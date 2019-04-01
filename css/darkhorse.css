@@ -777,6 +777,8 @@ span.bottom-item {
 	padding-right: 15px;
 	padding-left: 15px;
 	cursor: pointer;
+  transition: background-color 1.5s ease;
+	background-color: transparent;
 }
 span.bottom-item.divider{
 	border-style: none;
@@ -784,6 +786,7 @@ span.bottom-item.divider{
 	border-right: 1px solid white;
 }
 span.bottom-item.selected{
+  transition: background-color 1.5s ease;
 	background-color: red;
 }
 @media screen and (max-width: 479px){
