@@ -717,7 +717,9 @@ var Pages = {
                 ""+
                   "<div class='content-box text'><div style='text-align: center; font-size: 1.4em;'>Change the World</div>"+
                     "<p style='text-align:left;'><span style='font-size:1.7em'>O</span>ne of the greatest things about living in this time is the web. We have the ability to connect, empower and share our money, our love, and our insights with others.</p>"+
-                    "<p style='text-align:left;'><span style='font-size:1.7em'>S</span>ince 2005, from the environment to terminal illness, from societies in desperate need to the homeless, we have consciously used not only the proceeds from the profits of our company, but have engaged in hands-on action.</p>"+
+                    "<p style='text-align:left;'><span style='font-size:1.7em'>S</span>ince 2005, we have put our money, our time, and out hearts where our mouths are: working directly with homeless, "+
+                    "donating to environmental and humanitarian causes, and always being available to help those in need.  We have consciously used not only the proceeds from the profits of our company, but have engaged in hands-on action.  </p>"+
+                    "<p>Dark Horse is the honest-to-goodness union of tech and spirit-driven work.</p>"+
 			      "</div>"+
                   "<div class='video-holder' style='display: flex;'>"+
                   "<div class='content-box video'>"+

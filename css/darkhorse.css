@@ -454,8 +454,8 @@ div.world .content-box.text {
   padding: 0;
 }
 div.world .content-box.text p {
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 div.world .content-box.visible {}
 div.world .video-holder {
@@ -494,7 +494,7 @@ div.world video {
     align-content: flex-start;
   }
   div.world .content-box.text {
-    width: 80%;
+    /*width: 80%;*/
     height: 40vh; 
     font-size:1.5em;
   }
@@ -786,6 +786,7 @@ span.bottom-item {
 	cursor: pointer;
   transition: background-color 1s ease;
 	background-color: transparent;
+  font-weight: bold;
 }
 span.bottom-item.divider{
 	border-style: none;
