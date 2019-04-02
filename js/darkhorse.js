@@ -568,7 +568,7 @@ Page.prototype._openAfterBlind = function(){
         if (page.content[x].content)
           box.append("<div class='content'>"+page.content[x].content+"</div>");
         if (page.button){
-          var btn = $("<div class='button'>...MORE</div>");
+          var btn = $("<div class='button more'>...MORE</div>");
           if (page.button === "hidden"){
             btn.addClass('hidden');
           }

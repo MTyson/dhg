@@ -138,7 +138,7 @@ div.blind {
 	width: 270px; 
 	height: 340px; 
 	margin-top: 10px;
-	border-radius: 7px;
+	border-radius: 0px;
 	/*opacity: 0.70;*/
 	/*
 	background-image: linear-gradient(bottom, #444444 50%, #000000 50%);
@@ -229,8 +229,8 @@ div.blind {
 	bottom: 1px;
 	width: 82px;
 	height: 17px;
-	background-color: rgba(120,120,120,.7);
-	border-radius: 5px;
+	background-color: rgba(200,200,200,.9);
+	border-radius: 0px;
 	font-family: Arial, Helvetica, sans-serif;
 	border: solid #aaaaaa 1px;
 	color: black;
@@ -240,6 +240,7 @@ div.blind {
 	line-height: 30px;
 	cursor: pointer;
     line-height: 17px;
+	box-shadow: 1px 1px rgb(50, 50, 50);
 }
 
 .content-box .button:hover {
@@ -648,18 +649,24 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
         display: none;
     }
 }
-@media only screen and (min-width: 480px) and (max-width: 767px){ /* phone landscape */
-      div.home .content-box {
-        height: 29vh;
-        margin-right: 0px;
-        width: 90vw;
-    }
-    div.home .content-box .img-wrap{
-        display: none;
-        height: 0px;
-        -webkit-transition: all .8s; /* Safari */
-        transition: all .1s;
-    }
+@media only screen and (min-width: 480px) and (max-width: 767px){ /* phone landscape / tablet? */
+  div.home .content-wrap {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+  }
+  div.home .content-box {
+    height: 29vh;
+    margin-right: 0px;
+    width: 90vw;
+  }
+  div.home .content-box .img-wrap{
+    display: none;
+    height: 0px;
+    -webkit-transition: all .8s; /* Safari */
+    transition: all .1s;
+  }
     div.home .content-box .content{
       min-height: 40%;
     }
@@ -692,8 +699,8 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
     
 /* NAV: Arrows and Menu */
 .showcase-nav.next {
-  border-bottom-left-radius: 8px;
-  border-top-left-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
   right: 0;
 }
 .showcase-nav {
@@ -777,7 +784,7 @@ span.bottom-item {
 	padding-right: 15px;
 	padding-left: 15px;
 	cursor: pointer;
-  transition: background-color 1.5s ease;
+  transition: background-color 1s ease;
 	background-color: transparent;
 }
 span.bottom-item.divider{
@@ -786,8 +793,8 @@ span.bottom-item.divider{
 	border-right: 1px solid white;
 }
 span.bottom-item.selected{
-  transition: background-color 1.5s ease;
-	background-color: red;
+  transition: background-color 1s ease;
+	background-color: #d81515;
 }
 @media screen and (max-width: 479px){
   span.bottom-item {
