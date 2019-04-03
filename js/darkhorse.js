@@ -104,12 +104,26 @@ $.fn.resize = function( w, h, speed, easing ) {
 var App = {
 	spinnerVisible: false,
     navAttached: false,
-    showProgress: function() {
-		console.info("BEGIN showProgress");
-        if (!this.spinnerVisible) {
-            $("div#spinner").fadeIn("fast");
-			this.spinnerVisible = true;
+    submitContact: function(){
+      var form = $("form#contact");
+      var url = form.attr('action');
+      console.log("submitting: " + url);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data) {
+           console.log("form reply: " + data); // show response from the php script.
+           alert(data);
         }
+      });
+    },
+    showProgress: function() {
+		  console.info("BEGIN showProgress");
+      if (!this.spinnerVisible) {
+        $("div#spinner").fadeIn("fast");
+			  this.spinnerVisible = true;
+      }
     },
     hideProgress: function() {
         if (this.spinnerVisible) {
@@ -756,13 +770,13 @@ var Pages = {
 		wrapClass: "contact",
 		bg: "images/snowmoonsandiego2017.jpg",
 		html: "<div id='contact'><!--<div style='text-align: left;'>Drop a Line</div>-->"+
-			"<div class='content-box'><h2>Drop Us a Line</h2><form action='/webformmailer.php' method='post'>"+
+			"<div class='content-box'><h2>Contact Us</h2><form action='send_form_email.php' method='post' id='contact'>"+
 			"<input id='name' name='name' type='text' placeholder='Name'></input>"+
 			"<input id='email' name='email' type='text' placeholder='Email'></input>"+
 			"<input id='subject' name='subject' type='text' placeholder='Subject'></input>"+
 			"<textarea id='message' name='message' type='text' placeholder='Message' rows='4' cols='50'></textarea><br>"+
 			/*<button type='submit'>Send</button>"+*/
-			"<div class='button2'>SEND</div>"+
+			"<div class='button2' onclick='App.submitContact();'>SEND</div>"+
 			"<br><div class='contact-footer'>Or, you can reach us at the following:<br>Phone: 512-731-2418<br>Email: thebindi@gmail.com</div>"+
 			"</form></div>"+
 			"</div>"
