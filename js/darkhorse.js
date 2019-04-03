@@ -750,7 +750,25 @@ var Pages = {
        functions: [
                    App.afterWorld
                 ]
-	})/*,
+	}),
+	"contact": new Page({
+		id: 4,
+		wrapClass: "contact",
+		bg: "images/snowmoonsandiego2017.jpg",
+		html: "<div id='contact'><!--<div style='text-align: left;'>Drop a Line</div>-->"+
+			"<div class='content-box'><h2>Drop Us a Line</h2><form action='/webformmailer.php' method='post'>"+
+			"<input id='name' name='name' type='text' placeholder='Name'></input>"+
+			"<input id='email' name='email' type='text' placeholder='Email'></input>"+
+			"<input id='subject' name='subject' type='text' placeholder='Subject'></input>"+
+			"<textarea id='message' name='message' type='text' placeholder='Message' rows='4' cols='50'></textarea><br>"+
+			/*<button type='submit'>Send</button>"+*/
+			"<div class='button2'>SEND</div>"+
+			"<br><div class='contact-footer'>Or, you can reach us at the following:<br>Phone: 512-731-2418<br>Email: thebindi@gmail.com</div>"+
+			"</form></div>"+
+			"</div>"
+	})
+	
+	/*,
     "expand": new Page({
 		id: 4,
         wrapClass:"expand",

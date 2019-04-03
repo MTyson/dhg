@@ -696,6 +696,27 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
  } 
 @media only screen and (min-width: 992px) and (max-width: 1999px){ /* desktop */
  } 
+ 
+ /** CONTACT **/
+.bg-div.contact{
+  background-image: url("../images/snowmoonsandiego2017.jpg");
+}
+div.contact .content-box {
+    width: 450px; 
+    min-width: 300px;
+    margin-right: 13px;
+    -webkit-transition: all .8s; /* Safari */
+    transition: all .8s;
+}
+@media only screen and (min-width: 320px) and (max-width: 479px){ /* phone portrait */
+  
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){ /* phone landscape / tablet? */
+ 
+} 
+@media only screen and (min-width: 768px) and (max-width: 991px){ /* Tablet */
+
+} 
     
 /* NAV: Arrows and Menu */
 .showcase-nav.next {
@@ -810,3 +831,31 @@ span.bottom-item.selected{
       display: none;
   }
 }*/
+
+
+/* INPUTS */
+form {
+  padding: 15px;
+}
+input, textarea {
+  width: 400px;
+  display: block;
+  border: none;
+  color: #333;
+  background: rgba(255,255,255,.75);
+  border-bottom: 1px solid grey;
+  padding: 5px 2px 0 2px;
+  margin-top: 5px;
+}
+input:hover, textarea:hover {
+  border-radius: 8px
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-radius: 8px;
+  border-color: #EBD292;
+}
+.button2 {
+  cursor: pointer;
+  background: rgba(255,255,255,.2);
+}
