@@ -519,32 +519,32 @@ div.world video {
   }
 } 
 @media only screen and (min-width: 479px) and (max-width: 767px){ /* cell phone landscape */
-    div.world {
-        width: 90%;
-    }
-    div.world .content-box.text {
-        font-size:1.5em;
-        height: 250px;
-    }
-    div.world .video-overlay {
-      display: none;
-    }
-    div.world .video-holder {
-        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-        display: -ms-flexbox;      /* TWEENER - IE 10 */
-        display: -webkit-flex;     /* NEW - Chrome */
-        display: flex;
+  div.world {
+    width: 90%;
+  }
+  div.world .content-box.text {
+    font-size:1.5em;
+    height: 250px;
+  }
+  div.world .video-overlay {
+    display: none;
+  }
+  div.world .video-holder {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+
+    flex-direction: row;
+    -webkit-flex-direction: row;
     
-        flex-direction: row;
-        -webkit-flex-direction: row;
-        
-        background-color: transparent; box-shadow: none; width: 100%;
-    }
-    div.world .content-box.video {
-        height: 20vh;
-        width: 100%;
-    }
+    background-color: transparent; box-shadow: none; width: 100%;
+  }
+  div.world .content-box.video {
+    height: 20vh;
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px){ /* Tablet */ } 
 @media only screen and (min-width: 992px) and (max-width: 1999px){ /* desktop */ } 
@@ -862,4 +862,26 @@ input:focus, textarea:focus {
 .button2 {
   cursor: pointer;
   background: rgba(255,255,255,.2);
+}
+
+
+/* Scrollbars */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
