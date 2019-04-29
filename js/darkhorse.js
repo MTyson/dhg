@@ -294,7 +294,7 @@ var App = {
     box.addClass("detail");
     $(".content-box:not(#"+contentId+")").addClass("hidden");
     
-    window.location.hash = window.location.hash + ":" + contentId;
+    window.location.hash = window.location.hash.split(":")[0] + ":" + contentId;
 
     var btn = box.find('.button');
     
