@@ -780,7 +780,7 @@ var Pages = {
 			"<textarea id='message' name='message' type='text' placeholder='Message' rows='4' cols='50'></textarea><br>"+
 			/*<button type='submit'>Send</button>"+*/
 			"<div class='button2' onclick='App.submitContact();'>SEND</div>"+
-			"<br><div class='contact-footer'>Or, you can reach us at the following:<br>Phone: 512-731-2418<br>Email: thebindi@gmail.com</div>"+
+			"<br><div class='contact-footer'>Or, you can reach us at the following:<br>Phone: 512-731-2418<br>Email: dev@darkhores.tech</div>"+
 			"</form></div>"+
 			"</div>"
 	})
