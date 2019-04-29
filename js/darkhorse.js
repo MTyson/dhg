@@ -1,13 +1,6 @@
 /*
-* jquery.animate.clip.js
-*
-* jQuery css clip animation support -- Joshua Poehls
-* version 0.1.4
-
-* forked from Jim Palmer's plugin http://www.overset.com/2008/08/07/jquery-css-clip-animation-plugin/
-* idea spawned from jquery.color.js by John Resig
-* Released under the MIT license.
-*/
+ * Copyright Dark Horse Group, Inc., 2019 
+ */
 (function (jQuery) {
 
     function getStyle(elem, name) {
@@ -272,6 +265,11 @@ var App = {
     target = targetParts[0];
     
     page = Pages[target.toLowerCase()];
+    
+    if (!page) {
+      page = Pages["intro"];
+    }
+    
     page.setPath(targetParts);
     console.info("page: " + page);
     //activatePage() - move to OO class
@@ -279,6 +277,8 @@ var App = {
       Pages[p].active = false;
     }
     page.active = true;
+    
+    window.location.hash = target.toLowerCase();
     
     $('.bottom-item').each(function(x, item){ // Make menu item a member of Page
       $(item).removeClass('selected');
@@ -293,6 +293,8 @@ var App = {
 		var box = $('#'+contentId);
     box.addClass("detail");
     $(".content-box:not(#"+contentId+")").addClass("hidden");
+    
+    window.location.hash = window.location.hash + ":" + contentId;
 
     var btn = box.find('.button');
     
