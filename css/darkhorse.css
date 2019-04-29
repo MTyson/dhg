@@ -581,27 +581,31 @@ div.home .content-box .img-wrap img{
     width: 100%; height: auto;
 }
 div.home .content-box.detail {
-    width: 40%; height: 400px;
-    -webkit-transition: all .8s; /* Safari */
-    transition: all .8s;
+  width: 40%; height: 400px;
+  -webkit-transition: all .8s; /* Safari */
+  transition: all .8s;
+  text-align: left;
+}
+div.home .content-box.detail h3 {
+  padding-top: 10px;
 }
 div.home .content-box.detail .summary {
-    font-size: 0px;
-    width: 0px;
-    -webkit-transition: all .8s; /* Safari */
-    transition: all .1s;
+  font-size: 0px;
+  width: 0px;
+  -webkit-transition: all .8s; /* Safari */
+  transition: all .1s;
 }
 div.home .content-box.detail div.content, div.home .content-box.detail .btn {
-    display: block;
-    font-size: 1.1em;
-    -webkit-transition: all .8s; /* Safari */
-    transition: all .8s;
+  display: block;
+  font-size: 1.1em;
+  -webkit-transition: all .8s; /* Safari */
+  transition: all .8s;
 }
 div.home .content-box.hidden, div.home .content-box.hidden .button {
-    width: 0px; min-width: 0px; height: 0px;
-    font-size: 0px;
-    -webkit-transition: all .8s; 
-    transition: all .8s;
+  width: 0px; min-width: 0px; height: 0px;
+  font-size: 0px;
+  -webkit-transition: all .8s; 
+  transition: all .8s;
 }
 .content-box.visible {
     display: block;
