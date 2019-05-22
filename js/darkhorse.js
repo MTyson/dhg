@@ -289,6 +289,7 @@ var App = {
     page.open();
 	},
 	openContent: function(contentId){
+    console.info("contentId: "+ contentId);
 		$(".content-arrow").hide(800);
 		var box = $('#'+contentId);
     box.addClass("detail");
@@ -298,7 +299,8 @@ var App = {
 
     var btn = box.find('.button');
     
-    btn.html('BACK').off('click').on('click', function(e){
+    btn.html('BACK');
+    box.off('click').on('click', function(e){
       var pageId = box.parent().attr("page-id");
       var page = PageManager.getPageById(pageId);
       var imgPad = 20;
@@ -316,7 +318,7 @@ var App = {
       if ($(this).hasClass('hidden')){
           $(this).hide();
       }
-      $(this).html("...MORE");
+      btn.html("...MORE");
     });
 	},
   darkhorseLogo: function(initial){
@@ -588,7 +590,7 @@ Page.prototype._openAfterBlind = function(){
           if (page.button === "hidden"){
             btn.addClass('hidden');
           }
-          btn.on('click', function(e){
+          box.on('click', function(e){ // switch to box
             $(this).off('click');
             App.openContent($(e.target).parent().prop("id"));
           });
