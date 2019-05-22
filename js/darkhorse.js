@@ -313,10 +313,10 @@ var App = {
       $(".content-box.visible:not(#"+contentId+")").removeClass("hidden");
 
       if (box.find('video').length > 0){
-          box.find('video').get(0).pause();
+        box.find('video').get(0).pause();
       }
       if ($(this).hasClass('hidden')){
-          $(this).hide();
+        $(this).hide();
       }
       btn.html("...MORE");
     });
