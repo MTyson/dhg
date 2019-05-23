@@ -570,9 +570,12 @@ div.home .content-box div.content {
     transition: all .8s;
 }
 div.home .content-box .img-wrap{
-    width: 95%; max-height: 40%; margin-top: 5px;
-    min-height: 200px;
-    position: relative;
+  width: 95%; max-height: 40%; margin-top: 5px;
+  min-height: 200px;
+  transition:height 1s ease-out;
+  transition:width 1s ease-out;
+  transition:min-height 1s ease-out;
+  position: relative;
 }
 div.home .content-box .img-wrap img{
     position: absolute;
@@ -589,8 +592,11 @@ div.home .content-box.detail {
 div.home .content-box.detail h3 {
   padding-top: 10px;
 }
-div.home .content-box.detail .img-wrap, div.home .content-box.detail img {
-  width: 0px; height: 0px; min-height: 0px; 
+div.home .content-box.detail .img-wrap {
+  /*width: 0px; */height: 0px; min-height: 0px; 
+  transition:height 1s ease-out;
+  transition:width 1s ease-out;
+  transition:min-height 1s ease-out;
 }
 div.home .content-box.detail .summary {
   font-size: 0px;
