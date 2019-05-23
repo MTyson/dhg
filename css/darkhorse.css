@@ -589,6 +589,9 @@ div.home .content-box.detail {
 div.home .content-box.detail h3 {
   padding-top: 10px;
 }
+div.home .content-box.detail .img-wrap, div.home .content-box.detail img {
+  width: 0px; height: 0px; min-height: 0px; 
+}
 div.home .content-box.detail .summary {
   font-size: 0px;
   width: 0px;
