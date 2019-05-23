@@ -302,13 +302,15 @@ var App = {
     
     btn.html('BACK');
     box.off('click').on('click', function(e){
-      var pageId = box.parent().attr("page-id");
+      var pageId = box.closest(".content-box").attr("page-id");
+      console.info("pageId: " + pageId);
       var page = PageManager.getPageById(pageId);
       var imgPad = 20;
-      //$(".content-arrow").show(800);
       $(this).off('click').on('click', function(e){
-          $(this).off('click');
-          App.openContent($(e.target).parent().prop("id"));
+        $(this).off('click');
+        var pageId = $(e.target).parent().prop("id");
+        console.info("pageId: " + pageId);
+        App.openContent(pageId);
       });
       box.removeClass("detail");
       $(".content-box.visible:not(#"+contentId+")").removeClass("hidden");
@@ -574,7 +576,7 @@ Page.prototype._openAfterBlind = function(){
           imgWrap.append(video);
           
           imgWrap.on('click', function(){
-            App.openContent($(this).parent().attr('id'));
+            App.openContent($(this).closest(".content-box").attr('id'));
           });
         }
         
