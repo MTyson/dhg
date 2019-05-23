@@ -214,7 +214,7 @@ div.blind {
 	color: black;
 	margin: 7px 7px 5px 10px;
 	font-size: 1.1em;
-	height: 120px;
+	/*height: 120px;*/
 	overflow-y: auto;
 	display: none;
 }
@@ -581,7 +581,7 @@ div.home .content-box .img-wrap img{
     width: 100%; height: auto;
 }
 div.home .content-box.detail {
-  width: 40%; height: 400px;
+  width: 75%; height: 700px;
   -webkit-transition: all .8s; /* Safari */
   transition: all .8s;
   text-align: left;
@@ -634,7 +634,7 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
       transition: all .1s;
     }
     div.home .content-box .content{
-      min-height: 40%;
+      min-height: 100%;
     }
     div.home .content-box.detail .img-wrap {
         display: inline-block;
