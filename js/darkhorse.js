@@ -289,7 +289,7 @@ var App = {
     page.open();
 	},
 	openContent: function(contentId){
-    console.info("contentId: "+ contentId);
+    console.info("BEGIN openContent().  contentId: "+ contentId);
 		$(".content-arrow").hide(800);
 		var box = $('#'+contentId);
     box.addClass("detail");
@@ -298,6 +298,7 @@ var App = {
     window.location.hash = window.location.hash.split(":")[0] + ":" + contentId;
 
     var btn = box.find('.button');
+    console.info("btn: "+ btn);
     
     btn.html('BACK');
     box.off('click').on('click', function(e){
@@ -591,8 +592,11 @@ Page.prototype._openAfterBlind = function(){
             btn.addClass('hidden');
           }
           box.on('click', function(e){ // switch to box
+            console.info("box.onclick");
             $(this).off('click');
-            App.openContent($(e.target).parent().prop("id"));
+            var idContainer = $(e.target).closest('.content-box');
+            console.info("idContainer: " + idContainer);
+            App.openContent(idContainer.prop("id"));
           });
           /*box.on('click', function(e){
             $(this).off('click');
