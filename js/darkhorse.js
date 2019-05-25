@@ -715,9 +715,12 @@ var Pages = {
         }, 250);
       }
     },//+ "<a href='#' onclick='App.openContent(\"development\");return false;'>MORE</a>"
+	/*
+	 content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered."
+	 */
 		content: [
-			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Customized solutions that deliver what your projects need, efficiently. Friendly and experienced.", content: "You talk. We listen. Together, we create. We create a dynamic source of energy focused <em>directly</em> on what you need to realize your vision.<h3>Our Team</h3>Our team has specialty in: <ul><li>Full-Stack Development</li><li>MicroServices</li><li>Cloud Platforms (AWS, IBM, MS)</li><li>Java</li><li>Node</li><li>Python</li><li>React, Angular and Vue</li></ul><h3>Work With Us</h3> <p>Dark Horse can deliver whatever amount of help you need: we want to provide the perfect boost to achieve your goal.  Having delivered successful solutions across a broad range of verticals, we have well-rounded in-house capability and a network of trusted developers we can tap into.</p><h3>Let's Talk</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a>" },
-			{ id: "articles", image: "images/darkhorsearticles-500.jpg", title: "ARTICLES", subtitle: "IN DEPTH", summary: "Read some of our articles that have been featured on the cover of JavaWorld and IBM's developerWorks.", content: "Below are tech articles written by the Chief Architect at Dark Horse"+         
+			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Helping you decipher and discover, deeper drives and desires, helping you express yourself in the world and on the web.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered.<h3>Contact</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a>" },
+			{ id: "articles", image: "images/darkhorsearticles-500.jpg", title: "ARTICLES", subtitle: "IN DEPTH", summary: "Read some of our articles that have been featured on the cover of JavaWorld and IBM's developerWorks.", content: "Below are tech articles written by the Lead Architect at Dark Horse"+         
         "<p><a href='http://www.ibm.com/developerworks/opensource/library/j-use-elasticsearch-java-apps/index.html'>Elastic Search, Java and the Cloud</a></p>"+
         "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue1-bluemix/index.html'>Vue.js in the Cloud</a></p>"+
         "<p><a href='http://www.ibm.com/developerworks/library/wa-develop-vue2-bluemix/index.html'>Vue.js on BlueMix</a></p>"+
@@ -729,11 +732,16 @@ var Pages = {
         "<p><a href='http://www.javaworld.com/article/3045300/application-development/jump-into-java-microframeworks-part-4-play.html'>Java Play Framework</a></p>"+
         "<p><a href='http://www.javaworld.com/article/2077874/open-source-tools/the-pathproxy-pattern--persisting-complex-associations.html'>The Path Proxy Pattern</a></p>"+
         "<p><a href='http://www.javaworld.com/article/2077808/design-patterns/the-ajaxcomponent-strategy-for-jsf--the-best-of-both-worlds.html?page=7'>Ajax Component Strategy</a></p>"+
-        "<h3>Let's Talk</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a></h3>"+
-        "<p>Dark Horse is commited to making tech serve humanity.  We can deliver whatever amount of help you need: we want to provide the perfect boost to achieve your goal.  Having delivered successful solutions across a broad range of verticals, we have well-rounded in-house capability and a network of trusted developers we can tap into.</p>"},
+        "<h3>Contact</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a></h3>"+
+        "<p style='visibility:hidden'>Dark Horse is commited to making tech serve humanity.  We can deliver whatever amount of help you need: we want to provide the perfect boost to achieve your goal.  Having delivered successful solutions across a broad range of verticals, we have well-rounded in-house capability and a network of trusted developers we can tap into.</p>"},
       { id: "expansion", image: "images/darkhorse-imagine.jpg", title: "EXPANSION", subtitle: "GREATER CLARITY", summary: "Our coaching and consultation services help bring new aspects of yourself and your image into sharper focus.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." }
 		]
 	}),
+	/*
+                    "<p style='text-align:left;'><span style='font-size:1.7em'>S</span>ince 2005, we have put our money, our time, and out hearts where our mouths are: working directly with homeless, "+
+                    "donating to environmental and humanitarian causes, and always being available to help those in need.  We have consciously used not only the proceeds from the profits of our company, but have engaged in hands-on action.  </p>"+
+                    "<p>Dark Horse is the honest-to-goodness union of tech and spirit-driven work.</p>"+
+					*/
     "world": new Page({
 		id: 4,
 		bg: "images/earth-1900x1280.jpg",
@@ -742,9 +750,7 @@ var Pages = {
                 ""+
                   "<div class='content-box text'><div style='text-align: center; font-size: 1.4em;'>Change the World</div>"+
                     "<p style='text-align:left;'><span style='font-size:1.7em'>O</span>ne of the greatest things about living in this time is the web. We have the ability to connect, empower and share our money, our love, and our insights with others.</p>"+
-                    "<p style='text-align:left;'><span style='font-size:1.7em'>S</span>ince 2005, we have put our money, our time, and out hearts where our mouths are: working directly with homeless, "+
-                    "donating to environmental and humanitarian causes, and always being available to help those in need.  We have consciously used not only the proceeds from the profits of our company, but have engaged in hands-on action.  </p>"+
-                    "<p>Dark Horse is the honest-to-goodness union of tech and spirit-driven work.</p>"+
+					"<p style='text-align:left;'><span style='font-size:1.7em'>S</span>ince 2005, from the environment to terminal illness, from societies in desperate need to the homeless, we have consciously used not only the proceeds from the profits of our company, but have engaged in hands-on action.</p>"+
 			      "</div>"+
                   "<div class='video-holder' style='display: flex;'>"+
                   "<div class='content-box video'>"+
