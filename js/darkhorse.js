@@ -719,6 +719,7 @@ var Pages = {
 	 content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered."
 	 */
 		content: [
+		    { id: "expansion", image: "images/darkhorse-imagine.jpg", title: "EXPANSION", subtitle: "GREATER CLARITY", summary: "Our coaching and consultation services help bring new aspects of yourself and your image into sharper focus.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." },
 			{ id: "development", image: "images/programmingdarkhorseweb1.jpg", title: "DEVELOPMENT", subtitle: "CREATE", summary: "Helping you decipher and discover, deeper drives and desires, helping you express yourself in the world and on the web.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered.<h3>Contact</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a>" },
 			{ id: "articles", image: "images/darkhorsearticles-500.jpg", title: "ARTICLES", subtitle: "IN DEPTH", summary: "Read some of our articles that have been featured on the cover of JavaWorld and IBM's developerWorks.", content: "Below are tech articles written by the Lead Architect at Dark Horse"+         
         "<p><a href='http://www.ibm.com/developerworks/opensource/library/j-use-elasticsearch-java-apps/index.html'>Elastic Search, Java and the Cloud</a></p>"+
@@ -733,8 +734,7 @@ var Pages = {
         "<p><a href='http://www.javaworld.com/article/2077874/open-source-tools/the-pathproxy-pattern--persisting-complex-associations.html'>The Path Proxy Pattern</a></p>"+
         "<p><a href='http://www.javaworld.com/article/2077808/design-patterns/the-ajaxcomponent-strategy-for-jsf--the-best-of-both-worlds.html?page=7'>Ajax Component Strategy</a></p>"+
         "<h3>Contact</h3>Contact: <a href='mailto:dev@darkhorse.tech'>dev@darkhorse.tech</a></h3>"+
-        "<p style='visibility:hidden'>Dark Horse is commited to making tech serve humanity.  We can deliver whatever amount of help you need: we want to provide the perfect boost to achieve your goal.  Having delivered successful solutions across a broad range of verticals, we have well-rounded in-house capability and a network of trusted developers we can tap into.</p>"},
-      { id: "expansion", image: "images/darkhorse-imagine.jpg", title: "EXPANSION", subtitle: "GREATER CLARITY", summary: "Our coaching and consultation services help bring new aspects of yourself and your image into sharper focus.", content: "By staying very present and listening to the desired outcome of every job, we quickly, elegently create a new dynamic source of energy for your project and your vision, leaving you proud, relieved and empowered." }
+        "<p style='visibility:hidden'>Dark Horse is commited to making tech serve humanity.  We can deliver whatever amount of help you need: we want to provide the perfect boost to achieve your goal.  Having delivered successful solutions across a broad range of verticals, we have well-rounded in-house capability and a network of trusted developers we can tap into.</p>"}
 		]
 	}),
 	/*

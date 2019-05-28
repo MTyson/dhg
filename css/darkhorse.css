@@ -551,23 +551,23 @@ div.world video {
 
 /** HOME **/
 div.home .content-box {
-    width: 30%; 
-    min-width: 300px;
-    margin-right: 13px;
-    /*
-    font-size: 1.75em;
-    padding: .3%;
-    padding-left: 3%;
-    margin-left: 30vw;
-    text-align: left;
-    */
-    -webkit-transition: all .8s; /* Safari */
-    transition: all .8s;
+  width: 30%; 
+  min-width: 300px;
+  margin-right: 13px;
+  /*
+  font-size: 1.75em;
+  padding: .3%;
+  padding-left: 3%;
+  margin-left: 30vw;
+  text-align: left;
+  */
+  -webkit-transition: all .8s; /* Safari */
+  transition: all .8s;
 }
 div.home .content-box div.content {
-    font-size: 0px;
-    -webkit-transition: all .8s; /* Safari */
-    transition: all .8s;
+  font-size: 0px;
+  -webkit-transition: all .8s; /* Safari */
+  transition: all .8s;
 }
 div.home .content-box .img-wrap{
   width: 95%; max-height: 40%; margin-top: 5px;
@@ -598,6 +598,7 @@ div.home .content-box.detail .img-wrap {
   transition:width 1s ease-out;
   transition:min-height 1s ease-out;
   box-shadow: none;
+  width: 100%;
 }
 div.home .content-box.detail .summary {
   font-size: 0px;
