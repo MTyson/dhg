@@ -588,6 +588,7 @@ div.home .content-box.detail {
   -webkit-transition: all .8s; /* Safari */
   transition: all .8s;
   text-align: left;
+  box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
 }
 div.home .content-box.detail h3 {
   padding-top: 10px;
@@ -617,6 +618,8 @@ div.home .content-box.hidden, div.home .content-box.hidden .button {
   font-size: 0px;
   -webkit-transition: all .8s; 
   transition: all .8s;
+  box-shadow: none;
+  /*transition: box-shadow .8s;*/
 }
 div.home .content-box.hidden .img-wrap {
   box-shadow: none;
