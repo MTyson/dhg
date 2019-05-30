@@ -678,8 +678,12 @@ var Pages = {
 		bg: "images/dh-logo-no-text.jpg",
     wrapClass: "overview",
 		html: //"<div id='overview'>"+
-    "<div class='content-box text'><h2 style='margin-top: .6em;'>dark horse tek &ensp;<br> /ˈdärk ˈˌhôrs tek/</h2><h3>Definition: <span style='margin-bottom: 0px;font-style:italic;'> noun</span></h3>" +
-      "<p style='margin-top: .9em; margin-bottom: .6em'>A dark horse is a little-known person or thing that emerges to prominence, especially in a competition of some sort, or a contestant that seems unlikely to succeed.</p><p>Unlike traditional unicorns, darkhorse.tech consistently embodies and delivers on the promise of excellence and success, creating platinum level, dynamic technologies that empower its users, its investors and the world.</p>"+
+    "<div class='content-box text'><h2 style='margin-top: .6em;'>Dark Horse Tech</h2><br>"+
+    "<p style='margin-top: .9em; margin-bottom: .6em'>...Variety of companies, including Fortune 500 companies like:</p>"+
+	  "<img class='logo-ref' src='images/IBM-Logo.png' /> &nbsp;<img class='logo-ref' src='images/cisco-Logo.png' /> &nbsp;<img class='logo-ref' src='images/act-logo.png' /><br><br>"+
+    "<p>As seen in:</p>"+
+	  "<img class='logo-ref-wide' src='images/javaworld-logo.png' /> &nbsp;<img class='logo-ref-wide' src='images/dev-works-logo.png' />"+
+	  "</p>"+
     "</div>"+
       "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
         "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
