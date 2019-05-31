@@ -258,7 +258,7 @@ div.blind {
 .content-box p {
     /*font-size: 2em;*/
     margin: 5px; 
-	font-size: .8em;
+	font-size: .9em;
 }
 .content-box h1 {
     font-size: 2em;
@@ -281,11 +281,11 @@ div.bg-div.overview {
 }
 div.overview .content-box {
     width: 45vw; 
-    height: 50vh;
+    height: 55vh;
     font-size: 1.60em;
     padding: .3%;
     padding-left: 3%;
-    margin-left: 30vw;
+    /*margin-left: 30vw;*/
     text-align: left;
 }
 div.overview .content-box h2 {

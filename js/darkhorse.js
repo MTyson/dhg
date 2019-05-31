@@ -677,32 +677,56 @@ var Pages = {
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
     wrapClass: "overview",
+    logos: ['images/IBM-Logo.png', 'images/cisco-Logo.png', 'images/act-logo.png', 'images/javaworld-logo.png', 'images/dev-works-logo.png'],
+    logoIndex: 0,
 		html: //"<div id='overview'>"+
     "<div class='content-box text'><h2 style='margin-top: .6em; margin-bottom: .3em;'>Dark Horse Tech</h2>"+
 	"<h3 style='margin-bottom: .6em'>Welcome to the winner's circle.</h3>"+
-	"<p>Everything begins with intention.</p>"+
+	"<p>Everything on this plane began with <em>intention</em>.</p>"+
 	"<p>And Dark Horse was created from the intention to be the best.</p>"+
 	"<p>To come from out of nowhere and excell.</p>"+
 	"<p>In the fields of technology,</p>"+
 	"<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of human potential,</p>"+
-	"<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of humanitarian activism.,</p>"+
-	"<p>We do.  And so can you.</p>"+
+	"<p style='padding-bottom: 10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of humanitarian activism.</p>"+
+	"<div style='padding-bottom: 10px;'><p><span><b>We do.</b></span>  And so can you.</p></div>"+
+	"<p>Experience a whole new energy relationship with yourself, your business and you rquest for success.</p>"+
 	"<p>As recent as June of 2019 our writings have been syndicated around the world.</p>"+
 	"<p>Not only do we stay abreast of current technologies, we help develop them.</p>"+
 			  
-    /*"<p style='margin-top: .9em; margin-bottom: .6em'>...Variety of companies, including Fortune 500 companies like:</p>"+*/
+    /*"<p style='margin-top: .9em; margin-bottom: .6em'>...Variety of companies, including Fortune 500 companies like:</p>"+*
 	  "<img class='logo-ref' src='images/IBM-Logo.png' /> &nbsp;<img class='logo-ref' src='images/cisco-Logo.png' /> &nbsp;<img class='logo-ref' src='images/act-logo.png' /><br><br>"+
     "<p>As seen in:</p>"+
 	  "<img class='logo-ref-wide' src='images/javaworld-logo.png' /> &nbsp;<img class='logo-ref-wide' src='images/dev-works-logo.png' />"+
 	  "</p>"+
+	  */
     "</div>"+
       "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
         "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
+        "<img id='overview-carousel' src='' style='width: 8vw; inline-block;' />"+
+        "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
+		/*
           "<!--<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>-->" + 
       "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
-     // "</div>",
+	  */
+       "</div>",
       functions: [
-       App.afterOverview
+       App.afterOverview,
+       function() {
+         if (window.overviewCarouselInt) {
+           clearInterval(window.overviewCarouselInt);
+           window.overviewCarouselInt = null;
+         }
+          setTimeout(function(){
+            $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
+            window.overviewCarouselInt = setInterval(function(){
+              (Pages['overview'].logoIndex >= Pages['overview'].logos.length) ? Pages['overview'].logoIndex = 0 : Pages['overview'].logoIndex++;
+              
+              $('#overview-carousel').hide("slide", { direction: "left" }, 100);
+              $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
+              $('#overview-carousel').show("slide", { direction: "right" }, 100);
+            }, 2000); 
+          }, 50);
+       }
       ]
 	}),
     /*
