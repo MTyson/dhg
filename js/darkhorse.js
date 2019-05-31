@@ -677,7 +677,7 @@ var Pages = {
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
     wrapClass: "overview",
-    logos: ['images/IBM-Logo.png', 'images/cisco-Logo.png', 'images/act-logo.png', 'images/javaworld-logo.png', 'images/dev-works-logo.png'],
+    logos: ['images/IBM-Logo.png', 'images/cisco-Logo.png', 'images/pac-life-logo.png', 'images/prolifics-logo.png', 'images/deloitte-logo.png','images/act-logo.png', 'images/javaworld-logo.png', 'images/dev-works-logo.png'],
     logoIndex: 0,
 		html: //"<div id='overview'>"+
     "<div class='content-box text'><h2 style='margin-top: .6em; margin-bottom: .3em;'>Dark Horse Tech</h2>"+
@@ -712,18 +712,26 @@ var Pages = {
       functions: [
        App.afterOverview,
        function() {
-         if (window.overviewCarouselInt) {
+          for (var i = 0; i < Pages['overview'].logos.length; ++i) {
+            var img = new Image();
+            $(img).attr('src', Pages['overview'].logos[i]);
+          }
+          //$('#overview-carousel').css("visibility", "");
+          if (window.overviewCarouselInt) {
            clearInterval(window.overviewCarouselInt);
            window.overviewCarouselInt = null;
-         }
+          }
           setTimeout(function(){
             $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
             window.overviewCarouselInt = setInterval(function(){
-              (Pages['overview'].logoIndex >= Pages['overview'].logos.length) ? Pages['overview'].logoIndex = 0 : Pages['overview'].logoIndex++;
+              console.info("Pages['overview'].logoIndex: " + Pages['overview'].logoIndex + " : " + (Pages['overview'].logoIndex >= Pages['overview'].logos.length));
+              (Pages['overview'].logoIndex >= Pages['overview'].logos.length-1) ? Pages['overview'].logoIndex = 0 : Pages['overview'].logoIndex++;
+              console.info("now: " + Pages['overview'].logoIndex + " = " + Pages['overview'].logos[Pages['overview'].logoIndex]);
               
-              $('#overview-carousel').hide("slide", { direction: "left" }, 100);
-              $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
-              $('#overview-carousel').show("slide", { direction: "right" }, 100);
+              $('#overview-carousel').hide("slide", { direction: "left" }, 250, function(){
+                $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
+                $('#overview-carousel').show("slide", { direction: "right" }, 250);
+              });
             }, 2000); 
           }, 50);
        }

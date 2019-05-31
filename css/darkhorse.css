@@ -147,14 +147,14 @@ div.blind {
 	background-image: -webkit-linear-gradient(bottom, #444444 50%, #000000 50%);
 	background-image: -ms-linear-gradient(bottom, #444444 50%, #000000 50%);
 	*/
-	background-color: rgba(255,255,255,.45);
-    color: black;
-    font-family: garamond;
-    box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
-    text-align: center;
+	background-color: rgba(255,255,255,.30);
+  color: black;
+  font-family: garamond;
+  box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
+  text-align: center;
 }
 .content-box.visible{
-    margin-right: 1.5em;
+  margin-right: 1.5em;
 }
 .content-box.visible:last-child {
   /*margin-right: 0em;*/
@@ -280,8 +280,8 @@ div.bg-div.overview {
    -webkit-flex-direction: column;
 }
 div.overview .content-box {
-    width: 45vw; 
-    height: 55vh;
+    width: 40vw; 
+    height: 60vh;
     font-size: 1.60em;
     padding: .3%;
     padding-left: 3%;
