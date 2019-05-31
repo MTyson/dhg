@@ -257,7 +257,8 @@ div.blind {
 }
 .content-box p {
     /*font-size: 2em;*/
-    margin: 5px; 5px; 5px; 5px;
+    margin: 5px; 
+	font-size: .8em;
 }
 .content-box h1 {
     font-size: 2em;
@@ -267,8 +268,9 @@ div.blind {
     margin: 0;
 }
 .content-box h3 {
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 0;
+	font-weight: bold;
 }
 .button.hidden {
 	display: none;
