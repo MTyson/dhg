@@ -701,9 +701,9 @@ var Pages = {
 	  */
     "</div>"+
       "<div class='content-box' style='height: 140px;text-align:center;padding-top:0px;padding-bottom:0px;display:flex;flex-direction:row;align-items:center;justify-content:space-around;' id='dh-video'>"+
-        "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
-        "<img id='overview-carousel' src='' style='width: 8vw; inline-block;' />"+
-        "<img src='images/OM.png' style='width: 7vw; inline-block;' />"+
+        "<img class='om' src='images/OM.png' style='' />"+
+        "<img id='overview-carousel' src='' style='' />"+
+        "<img class='om' src='images/OM.png' style='' />"+
 		/*
           "<!--<video id='harrison-darkhorse' class='video-js vjs-default-skin' autoplay='true' controls style='' muted preload='auto' poster='' width='150'><source src='video/gh-dh-edit.webm' type='video/webm' /></video>-->" + 
       "<img src='images/OM.png' style='width: 7vw;inline-block;padding-right:5%;'/>",
@@ -724,9 +724,7 @@ var Pages = {
           setTimeout(function(){
             $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);
             window.overviewCarouselInt = setInterval(function(){
-              console.info("Pages['overview'].logoIndex: " + Pages['overview'].logoIndex + " : " + (Pages['overview'].logoIndex >= Pages['overview'].logos.length));
               (Pages['overview'].logoIndex >= Pages['overview'].logos.length-1) ? Pages['overview'].logoIndex = 0 : Pages['overview'].logoIndex++;
-              console.info("now: " + Pages['overview'].logoIndex + " = " + Pages['overview'].logos[Pages['overview'].logoIndex]);
               
               $('#overview-carousel').hide("slide", { direction: "left" }, 250, function(){
                 $('#overview-carousel').attr('src', Pages['overview'].logos[Pages['overview'].logoIndex]);

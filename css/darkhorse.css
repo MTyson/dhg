@@ -275,6 +275,8 @@ div.blind {
 .button.hidden {
 	display: none;
 }
+
+/* OVERVIEW */
 div.bg-div.overview {
    flex-direction: column;
    -webkit-flex-direction: column;
@@ -290,6 +292,16 @@ div.overview .content-box {
 }
 div.overview .content-box h2 {
     font-size: 1.4em;
+}
+img.om {
+  width: 7vw; 
+  display: inline-block;
+  min-width: 125px;
+}
+img#overview-carousel {
+	width: 8vw; 
+  display: inline-block;
+  min-width: 125px;
 }
 @media only screen and (min-width: 320px) and (max-width: 479px){ /* phone portrait */
     div.overview .content-box {
