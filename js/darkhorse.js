@@ -677,7 +677,7 @@ var Pages = {
 		id: 2,
 		bg: "images/dh-logo-no-text.jpg",
     wrapClass: "overview",
-    logos: ['images/IBM-Logo.png', 'images/cisco-Logo.png', 'images/pac-life-logo.png', 'images/prolifics-logo.png', 'images/deloitte-logo.png','images/act-logo.png', 'images/javaworld-logo.png', 'images/dev-works-logo.png'],
+    logos: ['images/IBM-Logo.png', 'images/cisco-logo.png', 'images/pac-life-logo.png', 'images/prolifics-logo.png', 'images/deloitte-logo.png','images/act-logo.png', 'images/javaworld-logo.png', 'images/dev-works-logo.png'],
     logoIndex: 0,
 		html: //"<div id='overview'>"+
     "<div class='content-box text'><h2 style='margin-top: .6em; margin-bottom: .3em;'>Dark Horse Tech</h2>"+
