@@ -595,7 +595,7 @@ div.home .content-box .img-wrap img{
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; height: auto;
+    width: 100%; /*height: auto;*/
 }
 div.home .content-box.detail {
   width: 75%; height: 700px;
